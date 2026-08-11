@@ -24,3 +24,17 @@ While the tools and games are simple in scope, they are built on modern, highly 
 
 *   studio2201 strictly follows the organization's global governance rules (`RULES.md`, `SWARM.md`, `PROBE.md`) managed in the meta-repository. 
 *   All development cycles follow the strict `OODA.md` iteration loop to ensure clean, provable code generation that avoids copyright entanglement.
+
+## 5. The "9 Tools" Roster (unRAID / Homelab Focus)
+
+The first 9 repositories focus strictly on core infrastructure and utilities demanded by the unRAID and self-hosting communities. They explicitly avoid heavy LLM/AI dependencies, relying instead on pure mathematical engineering (CRDTs, WebRTC, WASM) and the `openOODA` backend.
+
+1.  **Dashboard Hub**: A glassmorphism startpage that uses `openOODA` WebSockets to display real-time docker container states and NAS metrics.
+2.  **Uptime Monitor**: A ping/port monitor utilizing CRDTs to synchronize uptime states across multiple unRAID boxes, preventing false-positive alerts during local network drops.
+3.  **P2P File Drop**: A secure file-sharing portal utilizing WebRTC data channels for direct browser-to-browser transfers without filling up unRAID storage arrays.
+4.  **Config Vault**: A markdown and snippet manager for storing `docker-compose` files and scripts, featuring real-time collaborative editing via CRDTs.
+5.  **Proxy Manager**: An `openOODA`-powered reverse proxy with a beautiful GUI that automates Let's Encrypt certificates and routing without touching config files.
+6.  **Container Updater**: A visual alternative to Watchtower that provides graphical diffs of container updates and 1-click rollback support.
+7.  **Network Mapper & WoL**: Scans the local subnet to map devices and provides a clean UI for issuing Wake-on-LAN packets to sleeping VMs or backup NAS nodes.
+8.  **Log Streamer**: A lightweight, client-side WASM log viewer that tails docker containers in real-time, pushing all regex and parsing load to the browser to save NAS CPU cycles.
+9.  **DDNS Engine**: A dedicated dynamic DNS updater linking home IPs to Cloudflare/Route53 using `openOODA`'s asynchronous runtime for flawless reliability.
