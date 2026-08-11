@@ -32,9 +32,9 @@ The first 9 repositories focus strictly on core infrastructure and utilities dem
 1.  **Dashboard Hub**: A glassmorphism startpage that uses `openOODA` WebSockets to display real-time docker container states and NAS metrics.
 2.  **Uptime Monitor**: A ping/port monitor utilizing CRDTs to synchronize uptime states across multiple unRAID boxes, preventing false-positive alerts during local network drops.
 3.  **P2P File Drop**: A secure file-sharing portal utilizing WebRTC data channels for direct browser-to-browser transfers without filling up unRAID storage arrays.
-4.  **Config Vault**: A markdown and snippet manager for storing `docker-compose` files and scripts, featuring real-time collaborative editing via CRDTs.
-5.  **Proxy Manager**: An `openOODA`-powered reverse proxy with a beautiful GUI that automates Let's Encrypt certificates and routing without touching config files.
-6.  **Container Updater**: A visual alternative to Watchtower that provides graphical diffs of container updates and 1-click rollback support.
+4.  **HTML Archiver (Bookmarks)**: A clean bookmark manager that utilizes a WASM-based headless renderer to generate local, offline PDFs of articles before the original sites go offline, saving them directly to the NAS.
+5.  **LAN Speedtest**: A minimalist network benchmarking dashboard utilizing pure WebRTC data channels to stress-test peer-to-peer throughput, capable of saturating 10GbE connections natively in the browser.
+6.  **Sovereign Publisher (The Blog)**: A static-site generator and digital garden tailored for homelabs. It compiles markdown into WASM in milliseconds and automatically emits strict semantic metadata, making your blog perfectly ingestible by external AI agents.
 7.  **Network Mapper & WoL**: Scans the local subnet to map devices and provides a clean UI for issuing Wake-on-LAN packets to sleeping VMs or backup NAS nodes.
 8.  **Log Streamer**: A lightweight, client-side WASM log viewer that tails docker containers in real-time, pushing all regex and parsing load to the browser to save NAS CPU cycles.
-9.  **DDNS Engine**: A dedicated dynamic DNS updater linking home IPs to Cloudflare/Route53 using `openOODA`'s asynchronous runtime for flawless reliability.
+9.  **Agent Consent Gateway**: In a world where AI agents are everywhere scraping data, this acts as a reverse-proxy "data firewall." It uses `easyLDAP` M2M tokens to cryptographically authenticate incoming AI scrapers, rate-limiting or blocking them from reading your unRAID data based on your strict consent rules.
