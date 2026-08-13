@@ -1,142 +1,82 @@
-# Rules (any repo)
+# Rules
 
-**Location:** `~/RULES.md`  
-**Scope:** Any codebase.  
-**Purpose:** Always-on **first principles** of how we work. Not product scripts. Not DESIGN.
+**File:** `studio2201/RULES.md`
+These rules do not change. They apply in any project folder in the studio2201 organization.
 
-**Siblings:** `~/OODA.md` (rotation) · `~/PROBE.md` (assumption hunt).  
-**Product docs** (`ROOT/DESIGN.md`, `ROOT/TOOLS.md`) are **inputs** — they never replace this file.
-
----
-
-## 0. Where things run
-
-| Axiom (here) | Executed in |
-|--------------|-------------|
-| Hygiene requirements | **OODA Lock** (every ship); **PROBE** when security-shaped |
-| Security posture | **Always** in Act; **PROBE** to falsify |
-| First principles + planning | **OODA Observe / Decide** |
-| E-M | **OODA** every turn |
-| Reverse entropy | **OODA Ship** report; **PROBE** claim pack |
-| Line pressure | **OODA Lock**; **PROBE** E-pack |
-| Immune tests | **OODA Act**; **PROBE** rejects synthetic rails |
-
----
-
-## 1. Core axioms (non-negotiable)
+## 1. Basic rules
 
 ### 1.1 First principles
-- Prefer root causes and mechanisms over slogans and checklist theater.  
-- If a claim is not grounded in behavior + evidence, treat it as untested (\(U\)).  
-- **Plan just enough** to act: clear goal, constraints, and done-bar — then implement. Planning without Act violates E-M.
+Find the real cause of a problem. Do not just use quick fixes.
+If a claim has no proof, treat it as unproven.
+Make a small plan with a clear goal. Then do the work.
 
-### 1.2 E-M (energy / act)
-Every turn: **rank**, then **implement** or record an explicit fail-closed residual.  
-No observe-only theater. No “we should someday” without a backlog entry or residual note.
+### 1.2 Act every turn
+Do work on every turn. Do not only look. If you cannot do the work, write why.
+A TODO with no backlog row is not a plan.
+Finish this week's goal before a shiny side project. DESIGN still holds later wants.
 
-### 1.3 Honesty / fail-closed
-Unfinished work fails closed or is named residual.  
-No soft-pass, no silent OK, no fake “done.”
+### 1.3 Honesty
+If a task is not finished, say it is not finished.
 
-### 1.4 Security (default posture)
-- Prefer **default-deny** for privileged effects (auth, caps, secrets, network, exec).  
-- Privileges must be **explicit** on the product path (params, tokens, roles) — not ambient accident.  
-- Do not claim security stronger than rails prove.  
-- Secrets stay out of logs, fixed world-readable temps, and commits.  
-- **PROBE** is how we challenge security claims; axioms are the bar.
+### 1.4 Security
+Keep things locked by default.
+Give only the permissions the function needs.
+Do not say the code is secure if you have no proof.
+Do not put secret keys or passwords in the code or log files.
 
-### 1.5 Reverse entropy
-The **trust surface** should get cleaner over time, not dirtier.  
-Prefer ships that **lower** disorder \(S\) (or hold \(S\) with an honest one-line why).  
-Raising \(S\) (new untested claims, fail-open holes, hand-waves, oversize) is a bad ship unless the residual is explicit.
+### 1.5 Keep things clean
+The code must get cleaner over time.
+Do not add messy code or unproven features.
+If you must add messy code, explain why.
+Do not reach into another module's private state.
 
-### 1.6 Immune tests
-Behavior that is claimed ships with **pass and fail** proof where it matters.  
-Green happy-path only is not immunity.
+### 1.6 Proof of work
+When you build a feature, prove that it works.
+Also prove that it fails safely when there is an error.
+A test that always passes is not proof.
+If work fails halfway, leave the world consistent. Do not leave torn state.
 
-### 1.7 Hygiene (required)
-Hygiene is an **axiom**, not optional polish. Minimum bar before Ship (OODA Lock):
+### 1.7 Clean code
+A file must not have more than 256 lines. Split large files.
+Free memory you take.
+Do not leave debug files, old code, or useless text in the folder.
+Do not leave secret keys in the code.
+Delete temporary files when you are done.
+The code must do what the document says it does.
 
-| Check | Intent |
-|-------|--------|
-| **Line pressure** | Owned sources ≤ **256** lines (or repo lock); split at functional seams |
-| **No cruft** | No debug dumps, accidental binaries, `__pycache__`, or “pointless pointer” docs in the tree |
-| **Secrets** | No credentials/tokens in source or commit |
-| **Temps** | Build/run temps cleaned on success **and** failure (traps / equivalent) |
-| **Git** | No force-push of shared main unless owner policy; don’t commit secrets or generated trash |
-| **Claims match tree** | Docs don’t assert features the code doesn’t have (or residual is named) |
+### 1.8 Small steps
+Make small changes. Small changes are easier to test.
 
-Product may add hygiene scripts in `ROOT/TOOLS.md` or CI; absence of a script does **not** waive the axiom.
+### 1.9 Zero trust
+Do not trust other agents. Check their code yourself.
+Make sure the code is safe and works.
 
-### 1.8 Short feedback
-Prefer small changes that produce a **true** pass/fail signal quickly.
+### 1.10 Plain English
+Use short sentences.
+Use simple words.
+Do not use confusing tech words. If you must use a tech word, explain it.
+Tell the user: what changed, why it matters, what is not done, and what to do next.
 
-### 1.9 Zero Trust Agency
-Never trust summaries, commit messages, or "task complete" claims from peer agents (or yourself) without independently verifying the actual code.
-A "green CI" is only as trustworthy as its test coverage for the specific module modified. Always verify that security constraints (e.g., capability checks, budget decrements) were not silently bypassed to force a "happy path" success.
+### 1.11 Competition
+If there are two ways to solve a problem, test both.
+The faster or cleaner code wins. Delete the losing code.
 
----
+### 1.12 Internet rules
+If you write code for the internet, follow the official internet rules (IETF RFCs).
+Write the RFC number in the file.
 
-## 2. Heuristics (support the axioms)
+### 1.13 Write Rust, not host shell
+This is a Rust organization. New tools and checks are Rust `.rs` files. Run them with `cargo xtask`.
+Do not add a new `.sh` or `.py` helper when the same job can be a Rust tool.
+A host script is only for things Rust cannot do (like Docker entrypoints or CI pipelines).
+Put one line at the top of that script saying why it is not Rust.
 
-| Name | Rule |
-|------|------|
-| **Power law** | Decide at most **5** items this turn; ignore the long tail. |
-| **Line pressure** | Default **≤256** lines / owned file (or repo lock). |
-| **Entropy \(S\)** (optional score) | \(S = U + F + W + O\) |
+## 2. Planning rules
 
-| Term | Meaning |
-|------|---------|
-| **\(U\)** | Untested claims |
-| **\(F\)** | Fail-open / silent OK |
-| **\(W\)** | Hand-waves (stub as done) |
-| **\(O\)** | Oversize owned files |
-
-Report when used: `S: n (Δ …) — U=_ F=_ W=_ O=_`  
-Repos may extend \(S\) in **ROOT/TOOLS.md** (product-only terms).
-
----
-
-## 3. Science as *source* (motivation, not a catalog)
-
-| Domain | Idea | Axiom / place |
-|--------|------|----------------|
-| Control / OODA | Short loops | OODA.md |
-| Flight / energy | Act, don’t only plan | E-M |
-| Thermo | Trust-surface disorder | Reverse entropy / \(S\) |
-| Pareto / math | Few items dominate | Power law ≤5 |
-| Biology | Attack *and* defend | Immune tests |
-| Chemistry | No fake purity | Fail-closed |
-| Materials | Complexity limits | Line pressure / hygiene |
-
----
-
-## 4. Using product docs (combine, don’t replace)
-
-| Input | Role |
-|-------|------|
-| **`ROOT/DESIGN.md`** | What this product is. Don’t edit DESIGN for fake victory. |
-| **Backlog** | What to build after red rails / honesty. |
-| **`ROOT/PROGRESS.md`** | Handoff; update on Ship. |
-| **`ROOT/TOOLS.md`** | Product-only metrics/scripts — **additional** constraints. |
-| **Rails / CI** | Lock suspects; PROBE still challenges claims. |
-
----
-
-## 5. Ranking (default Decide order)
-
-1. Red product rails / regressions  
-2. Honesty / security fail-open holes  
-3. Next backlog item (DESIGN-aligned)  
-4. DESIGN gap → backlog, then do  
-5. Entropy / hygiene / split only if blocking or cheap  
-
----
-
-## 6. Non-goals
-
-No language mandating, no product binary lists, no smoke inventories. Those are **ROOT** docs.
-
----
-
-*Process kit: **RULES** · **OODA** · **PROBE**.*
+Focus: choose at most 5 tasks at one time.
+File size: keep files under 256 lines.
+Task order:
+1. Fix broken code first.
+2. Fix security holes next.
+3. Build the next planned feature.
+4. Clean up messy code last.
