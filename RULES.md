@@ -81,10 +81,14 @@ Task order:
 3. Build the next planned feature.
 4. Clean up messy code last.
 
-## 3. The Sins (Anti-patterns)
+## 3. The 7 Sins (Anti-patterns)
 
 These are explicit anti-patterns that violate the rules. Do not commit these sins.
 
-*   **Sin #1 (Gluttony):** Writing oversized files. A file exceeding 256 lines is a sin against Clean Code (Rule 1.7).
-*   **Sin #2 (Sloth):** Making plans with no inventory or failing to act. A TODO without a backlog row is a sin against Act Every Turn (Rule 1.2).
-*   **Sin #3 (Pride):** Synthetic green CI. Claiming rules are met, or tests pass, when the code actually violates constraints, uses stubs without failing closed, or makes unproven security claims (Rules 1.3, 1.4, 1.6).
+1.  **Sin #1 (Gluttony):** Writing oversized files. A file exceeding 256 lines is a sin against Clean Code (Rule 1.7).
+2.  **Sin #2 (Sloth):** Making plans with no inventory, or failing to act. A TODO without a backlog row is a sin against Act Every Turn (Rule 1.2).
+3.  **Sin #3 (Pride):** Synthetic green CI. Claiming rules are met, or tests pass, when the code actually violates constraints, uses stubs without failing closed, or makes unproven security claims (Rules 1.3, 1.4, 1.6).
+4.  **Sin #4 (Envy):** Reaching into another module's private state instead of using public APIs (Rule 1.5).
+5.  **Sin #5 (Lust):** Chasing shiny new features or side projects before finishing the week's goal or fixing broken code (Rule 1.2).
+6.  **Sin #6 (Greed):** Hoarding memory without freeing it, or requesting excessive security permissions/capabilities instead of the absolute minimum required (Rules 1.4, 1.7).
+7.  **Sin #7 (Wrath):** Force-pushing to shared main to bypass CI rails, or deliberately leaving the world in a torn state after a failure (Rule 1.6).
