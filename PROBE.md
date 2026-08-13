@@ -1,239 +1,100 @@
-# Code Probe (any repo)
+# Code Probe (Any Repo)
 
 **Location:** `~/PROBE.md`  
-**Scope:** Any codebase.  
-**Purpose:** Adversarial **assumption hunt** — falsify claims. Not a compliance audit product. Not green-CI theater.
+**Scope:** Any codebase in studio2201.  
+**Purpose:** Deep security testing and finding broken assumptions. This is not a simple checklist. This is a hostile test.
 
-**Always load:** `~/RULES.md` (bar). **Build rotation:** `~/OODA.md`.  
-**Product docs** are **inputs** only.
+**Always load:** `~/RULES.md`.  
+**For normal work:** `~/OODA.md`.  
 
-**Hygiene:** Required every Ship via **OODA Lock** (RULES §1.7). PROBE **adds** hostility (security, lifecycle, chaos). It does not replace Lock.
-
----
-
-## First principle
-
-**Software stability is an illusion maintained only until an assumption is violated.**
-
-A probe does not “verify the code works.” It **destroys assumptions** behind code, docs, and green rails: fail-open paths, torn states, synthetic tests, lifecycle and security debt.
+**Rule check:** You must check rules (like the 256-line limit) every time you ship (`OODA.md`). PROBE adds extra, deeper tests. It does not replace the normal checks.
 
 ---
 
-## 0. Defaults
+## 1. First principle
 
-| Constant | Default | Notes |
+**Software only works until an assumption breaks.**
+
+PROBE does not "verify the code works." PROBE destroys assumptions behind the code, the docs, and the tests. PROBE looks for code that fails open, broken states, fake tests, and security holes.
+
+---
+
+## 2. Default Rules
+
+| Rule | Default | Notes |
 |----------|---------|--------|
-| **MAX_LINES** | **256** | Prefer repo lock if present |
-| **Hang budget** | 5–10s per hostile input | Hang = **FAIL** |
-| **CRIT dual-repro** | 2 independent runs | Never close CRIT on one witness |
+| **File Size Limit** | **256 lines** | Split files if they are larger. |
+| **Hang test** | 5–10s max | If the code hangs, it fails the test. |
+| **Verify bugs** | 2 times | Run the test twice to be sure a bug is real. |
 
 ---
 
-## 0.1 Product inputs (ROOT only)
+## 3. How to break the code (Test Packs)
 
-| Artifact | Use |
-|----------|-----|
-| `DESIGN.md` | What “aligned” means |
-| `TOOLS.md` | Product metrics/scripts (optional) |
-| Line lock / fmt / lint | Hygiene + \(O\) |
-| Smokes / CI | **Suspects**, not proof |
-| Residual lists | Claim honesty |
+Start at the edge of the system (network, files, login). Work backward.
 
-```bash
-ROOT=<repo>
-test -f "$ROOT/DESIGN.md" && echo HAS_DESIGN=1
-test -f "$ROOT/TOOLS.md" && echo HAS_PRODUCT_TOOLS=1
-test -x "$ROOT/scripts/check_file_lines.sh" && "$ROOT/scripts/check_file_lines.sh"
-```
+### Boundary tests
+- Run the code exactly right with full permissions. (Must pass)
+- Run the code with missing permissions or no login. (Must fail safely)
+- Run the code with a fake or wrong token. (Must block)
+- Make the OS fail (full disk, missing file). (Must return an error, not silently pass)
 
-**Hard rule:** Smokes and product TOOLS never skip boundary/chaos dual-repro.
+### Chaos tests
+- Give the code too little memory or too few file descriptors. (Must not hang)
+- Try to write to a read-only file. (Must fail safely)
+- Send valid data and garbage data at the same time. (Must not lock up)
+- Send empty, huge, or broken files. (Must fail safely)
 
----
-
-## 1. Roles (adversarial independence)
-
-| Role | May | Must not |
-|------|-----|----------|
-| **Orchestrator** | Schedule; **re-run** CRITs; write report | Implement fixes; rubber-stamp |
-| **Worker** | Fix + fault-inject on **product** binaries | Self-certify CRIT |
-| **Challenger** | Falsify Worker claims; reject synthetic tests | Ship fix same turn as finding |
-
-One agent may wear all three roles — still **re-run** CRITs independently (second shell / clean state).
+### Lifecycle tests
+- Files and network connections must be closed when done.
+- Temporary files must be deleted, even if the code crashes.
+- Passwords and secret keys must not be printed to log files.
 
 ---
 
-## 2. Boundary pack (bottom-up)
+## 4. Check the Rules (The 7 Sins)
 
-Start at OS/network/auth edges. Trace **backwards**. Find **torn states**.
-
-| # | Attack | Pass |
-|---|--------|------|
-| B1 | Happy path with full privilege | Succeeds as claimed |
-| B2 | Missing privilege / auth | Fail-closed |
-| B3 | Forged / zero / wrong credential on **product path** | Deny |
-| B4 | OS fail after open (full disk, short write) | Error, not silent Ok |
-| B5 | Forbidden path / permission deny | No ambient success |
-
----
-
-## 3. Chaos pack
-
-| # | Attack | Pass |
-|---|--------|------|
-| C1 | FD starve (`ulimit -n 32`/`64`) | No hang |
-| C2 | RO / unwritable temp | Non-zero |
-| C3 | Concurrent valid + garbage | No deadlock |
-| C4 | Empty / truncated / binary / oversized | Fail-closed; hang = FAIL |
-| C5 | Missing runtime / bad link | Fail-closed |
+Check the rules from `RULES.md`. Look for the 7 Sins:
+1. Are there oversized files (Gluttony)?
+2. Are there plans with no action (Sloth)?
+3. Are tests cheating to look green (Pride)?
+4. Does code reach into private states (Envy)?
+5. Are we chasing shiny features before fixing bugs (Lust)?
+6. Does the code leak memory or ask for too many permissions (Greed)?
+7. Is the world left in a broken state after an error (Wrath)?
 
 ---
 
-## 4. Lifecycle pack
+## 5. Report Findings
 
-| # | Check |
-|---|--------|
-| L1 | Handles closed on all paths |
-| L2 | Partial write/read = failure where integrity claimed |
-| L3 | Children reaped |
-| L4 | Temps cleaned on success **and** failure |
-| L5 | No secrets in world-readable fixed temps |
-| L6 | Question large clones if zero-copy claimed |
-
----
-
-## 5. Hygiene + maintainability (with RULES)
-
-Confirm RULES hygiene (line lock, cruft, secrets, temps, claim/docs match) — same bar as OODA Lock.  
-PROBE **extends** with hostile cases (oversized input, RO temp, secret-in-log attempts).
-
-| # | Check |
-|---|--------|
-| E1 | Line lock green (or ratchet) |
-| E2 | Lock misses owned types (e.g. scripts lock ignores) |
-| E3 | Ceiling list (~90% MAX_LINES) |
-
----
-
-## 6. Claim–evidence pack
-
-| # | Check |
-|---|--------|
-| K1 | Docs vs product path |
-| K2 | CI/smokes vs real entrypoints |
-| K3 | “Not supported” is non-zero / explicit error |
-| K4 | Build-path matrix (test × build × release × flags) |
-| K5 | Security claims ≤ what rails prove |
-
----
-
-## 7. Anti-synthetic (Challenger)
-
-Reject if any **no**:
-
-1. Same binary users get?  
-2. Same product path/flags?  
-3. Exit codes without pipe-masked `$?`?  
-4. Would fail if the bug still existed?  
-5. Attack one layer below the claim?  
-6. Auth/caps: missing / wrong / forge covered?
-
-```bash
-cmd >out 2>err
-echo exit=$?
-```
-
----
-
-## 8. Phases
-
-| Phase | Action |
-|-------|--------|
-| **P0** | Adapter + product inputs + surface list |
-| **P1** | Boundary |
-| **P2** | Build matrix |
-| **P3** | Chaos |
-| **P4** | Lifecycle |
-| **P5** | Claims / security honesty |
-| **P6** | Hygiene + line pressure |
-| **P7** | Challenger re-runs Worker fixes |
-| **P8** | Report |
-
-**Done when:** dual-repro CRITs, clean exits measured correctly, findings complete, fixes re-challenged.
-
----
-
-## 9. Finding schema
+When you find a bug, write a report using this format:
 
 ```markdown
 ## Finding F##
 Severity: CRIT | HIGH | MED | LOW
-Assumption destroyed:
-Surface:
-Repro (shell):
-Actual output / exit:
-Would smoke catch? (yes/no + why):
-Residual after fix? (none | text):
+What broke:
+How to trigger it (shell command):
+What actually happened:
+Why the normal tests missed it:
+What to fix:
 ```
 
 | Severity | Meaning |
 |----------|---------|
-| **CRIT** | Bypass or wrong success on product path |
-| **HIGH** | Fail-open, hang, silent wrong behavior |
-| **MED** | Lifecycle / incomplete seal / hygiene debt |
-| **LOW** | Docs drift, ceiling pressure |
-
-```markdown
-## Session
-ROOT:
-HAS_DESIGN / HAS_PRODUCT_TOOLS:
-Hygiene / line lock:
-Smokes (suspects):
-```
+| **CRIT** | Security bypass, or broken code acts like it worked. |
+| **HIGH** | Code hangs, fails open, or does the wrong thing silently. |
+| **MED** | Temporary files left behind, messy code, minor rule breaks. |
+| **LOW** | Documentation is wrong, or file is close to 256 lines. |
 
 ---
 
-## 10. Adapter
-
-```markdown
-## Adapter: <project>
-Root path:
-Product binaries / entrypoints:
-Build & run:
-Trust boundaries:
-Owned source globs:
-MAX_LINES (default 256):
-Line lock / hygiene commands:
-ROOT/DESIGN.md?:
-ROOT/TOOLS.md? (product-only):
-Known residual claims:
-CI / smoke commands (suspects):
-Threat model one-liner:
-```
-
----
-
-## 11. Master prompt
+## 6. Master prompt
 
 ```text
-Initialize Code Probe from ~/PROBE.md with ~/RULES.md loaded.
-Target ONE ROOT. Fill the adapter.
-Product DESIGN/TOOLS are inputs only.
-Roles: Orchestrator, Worker, Challenger (or one agent wearing all three with dual-repro).
-P0→P8: boundary, chaos, lifecycle, claims, hygiene.
-CRIT: dual independent repro; no pipe-masked exit codes.
-Real product binaries only. Reject synthetic tests.
-Not a compliance audit — assumption hunt / code review.
+Run Code Probe from ~/PROBE.md with ~/RULES.md loaded.
+Target ONE project.
+Look for broken assumptions, fake tests, and security holes.
+Do not trust the tests. Run the code yourself.
+Check for the 7 Sins.
+Write a report with the CRIT/HIGH/MED/LOW format.
 ```
-
----
-
-## 12. Not this framework
-
-- Not regulatory/compliance “audit” product  
-- Not “run smokes and write PASSED”  
-- Not a substitute for OODA Lock hygiene on every ship  
-- Not permission to rewrite without dual-repro  
-
----
-
-*Process kit: **PROBE** · **RULES** · **OODA**.*

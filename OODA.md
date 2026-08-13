@@ -1,103 +1,104 @@
-# OODA (any repo)
+# OODA (Any Repo)
 
 **Location:** `~/OODA.md`  
-**Scope:** Any codebase.  
-**Purpose:** One rotation: **Observe → Decide → Act → Lock → Ship**.
+**Scope:** Any codebase in studio2201.  
+**Purpose:** How to work on tasks: **Observe → Decide → Act → Lock → Ship**.
 
 **Always load:** `~/RULES.md`.  
-**When claims need hostility:** `~/PROBE.md`.  
-**Product:** `ROOT/DESIGN.md` (each repo should have one).  
----
-
-## Always on (from RULES — summary)
-
-- First principles + enough planning to act  
-- E-M, honesty/fail-closed, security posture, reverse entropy  
-- Immune tests, **hygiene**, line pressure ≤256 (or repo lock)  
-- Power law: Decide ≤ **5**  
-
-Full text: **`~/RULES.md`**.
+**When you need to test security deeply:** `~/PROBE.md`.  
+**Product goals:** `DESIGN.md` in the project root.
 
 ---
 
-## Adapter (fill every session)
+## Always on (from RULES)
 
-```markdown
+- Find the real cause. Plan just enough to start working.
+- Do work every turn. Do not only look.
+- Tell the truth. If work fails, fail safely.
+- Keep things locked by default.
+- Keep files under 256 lines. Prove your work with tests.
+- Choose at most 5 tasks at a time.
+
+Full rules: **`~/RULES.md`**.
+
+---
+
+## Setup (fill every session)
+
+```text
 ROOT:
-Product binaries / how to build & run:
+How to build & run:
 Backlog file (or issues):
 Handoff file (e.g. PROGRESS.md):
-Must-not-regress rails (discover under ROOT):
-Hygiene commands (line lock, fmt, lint — if any):
-ROOT/DESIGN.md present?:
+Must-not-break rules (check tests/ in ROOT):
+Cleanup commands (fmt, lint):
+Is ROOT/DESIGN.md present?:
 ```
 
 ---
 
 ## 1. Observe
 
-1. Handoff (PROGRESS / notes)  
-2. Backlog  
-3. **Tree health / hygiene snapshot** — line lock if present; obvious cruft; red rails  
-4. Security-sensitive surfaces (auth, secrets, I/O, exec) if this product has them  
+1. Read the handoff notes and backlog.
+2. Check the code health. Are there files over 256 lines? Are tests failing?
+3. Look for security risks (passwords, tokens, file writing, network calls).
 
-Ask: best next **product** step (E-M / information value)?  
-Plan only enough to Act (RULES: first principles + planning).
+Ask: What is the most important thing to fix or build next?
+Plan only enough to start writing code.
 
 ---
 
-## 2. Decide (≤5)
+## 2. Decide (Choose at most 5)
 
-Prefer, in order:
+Choose tasks in this order:
 
-1. **Red product rails** / regressions  
-2. **Honesty / security** fail-open holes  
-3. **Next backlog item** (DESIGN-aligned)  
-4. **DESIGN gap** → add to backlog, then do  
-5. **Entropy / hygiene / split** only if blocking or cheap  
+1. **Fix broken code or tests.**
+2. **Fix security holes.**
+3. **Build the next planned feature.**
+4. **Plan missing features** (add to backlog, then do them).
+5. **Clean up messy code** (split large files).
 
 ---
 
 ## 3. Act
 
-- Implement on the **real** product path for this ROOT  
-- Fail-closed unfinished work (or explicit residual)  
-- Stay under line pressure or split same rotation  
-- Ship tests with behavior when claims matter  
-- Respect security posture (default-deny privileges; no secrets in tree)  
+- Write real code in the project.
+- If you cannot finish, leave the code safe and tell the user.
+- Split files if they get close to 256 lines.
+- Write tests that prove your code works.
+- Keep things locked. Do not put secret keys in the code.
 
 ---
 
-## 4. Lock (hygiene + rails)
+## 4. Lock (Check before shipping)
 
-**Hygiene is required here** (RULES §1.7), not deferred to PROBE:
+You must check these things before you ship:
 
-1. **Execute Hygiene Check** — strictly follow the 6 steps from `RULES.md §1.7` (Line pressure, Cruft, Secrets, Temps, Git, Docs).
-2. **Product rails** — only scripts/CI this ROOT actually has (discover; don't invent).
-3. Backlog checkboxes only if **really** done (fixtures + product path).
+1. **Check rules:** Run `RULES.md`. Are files under 256 lines? Did you delete old debug code? Are there any secret keys?
+2. **Check tests:** Run `cargo test` (or the project's tests). Everything must pass.
+3. **Check backlog:** Only check off tasks if the code is fully done and tested.
 
-If hygiene fails → do not Ship; fix or residual.
+If any check fails, do not ship. Fix the code first.
 
 ---
 
 ## 5. Ship
 
-- Commit/push as appropriate (no secrets; no force-push of shared main unless owner policy)  
-- Short report: what shipped, design/backlog area, **\(S\)** / **\(O\)** if used, hygiene OK  
-- Prefer **reverse entropy** (trust surface cleaner or flat with reason)  
-- **Never** auto-claim release/beta unless owner policy already did  
+- Commit and push your code to the server. Do not force-push to main.
+- Write a short report to the user: what you built, what rules you followed, and what to do next.
+- The code must be cleaner than when you started.
 
 ---
 
 ## When to run PROBE
 
-Use **`~/PROBE.md`** in the same ROOT when:
+Use **`~/PROBE.md`** when:
 
-- Security or privilege claims need falsification  
-- You suspect fail-open, torn state, or synthetic green rails  
-- After a large change to boundaries (I/O, auth, exec, caps)  
+- You need to test security rules deeply.
+- You think the code is hiding errors or passing tests by cheating.
+- You just made a big change to security, passwords, or networking.
 
-PROBE does **not** replace Lock hygiene; it **adds** hostility.
+PROBE adds extra security checks. It does not replace the normal checks in step 4.
 
 ---
 
@@ -105,21 +106,10 @@ PROBE does **not** replace Lock hygiene; it **adds** hostility.
 
 ```text
 Run OODA from ~/OODA.md with ~/RULES.md loaded.
-Target ONE repository ROOT. Fill the adapter.
-ROOT/DESIGN.md is a product input only if present.
-Observe → Decide (≤5) → Act → Lock (hygiene + rails) → Ship.
-First principles, E-M, fail-closed, reverse entropy, security posture.
-No soft-pass. No foreign product assumptions.
-For adversarial assumption hunt: ~/PROBE.md.
+Target ONE repository ROOT. Fill the setup.
+ROOT/DESIGN.md is for project goals.
+Observe → Decide (≤5) → Act → Lock (check tests) → Ship.
+First principles, do real work, fail safely, keep things clean, keep things locked.
+Do not cheat on tests. Do not guess how the project works.
+For deep security tests: ~/PROBE.md.
 ```
-
----
-
-## Product session notes (optional)
-
-A short product pointer (e.g. `loop - openOODA.md`) may set ROOT, DESIGN, backlog, and preferred rails only.  
-Do **not** fork the whole OODA file per product.
-
----
-
-*Process kit: **OODA** · **RULES** · **PROBE**.*
