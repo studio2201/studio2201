@@ -80,3 +80,11 @@ Task order:
 2. Fix security holes next.
 3. Build the next planned feature.
 4. Clean up messy code last.
+
+## 3. The Sins (Anti-patterns)
+
+These are explicit anti-patterns that violate the rules. Do not commit these sins.
+
+*   **Sin #1 (Gluttony):** Writing oversized files. A file exceeding 256 lines is a sin against Clean Code (Rule 1.7).
+*   **Sin #2 (Sloth):** Making plans with no inventory or failing to act. A TODO without a backlog row is a sin against Act Every Turn (Rule 1.2).
+*   **Sin #3 (Pride):** Synthetic green CI. Claiming rules are met, or tests pass, when the code actually violates constraints, uses stubs without failing closed, or makes unproven security claims (Rules 1.3, 1.4, 1.6).
