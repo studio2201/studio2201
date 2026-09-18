@@ -10,7 +10,7 @@ Working doctrine for the studio2201 organization.
 | `SWARM.md` | Multi-agent coordination |
 | `DESIGN.md` | Product design principles |
 
-**Storefront:** https://studio2201.github.io
+**Storefront:** https://studio2201.com
 
 ---
 
