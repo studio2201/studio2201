@@ -1,0 +1,15 @@
+[submodule "vigil"]
+	path = vigil
+	url = git@github.com:studio2201/vigil.git
+[submodule "snip"]
+	path = snip
+	url = git@github.com:studio2201/snip.git
+[submodule "boneyard"]
+	path = boneyard
+	url = git@github.com:studio2201/boneyard.git
+[submodule "aegis"]
+	path = aegis
+	url = git@github.com:studio2201/aegis.git
+[submodule "proven"]
+	path = proven
+	url = git@github.com:studio2201/proven.git

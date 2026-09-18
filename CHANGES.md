@@ -4,10 +4,11 @@ All notable changes to the studio2201 product framework are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/) 1.1.0.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
-## [Unreleased]
+## [1.2.1] — 2026-09-18
 
 ### Added
-- (placeholder — next iteration's framework changes land here)
+- `.gitmodules` tracking for all 5 submodules (`vigil`, `snip`, `boneyard`, `aegis`, `proven`).
+- Synchronized submodule gitlinks to v0.2.0 release heads.
 
 ## [0.1.2] — 2026-09-17
 
