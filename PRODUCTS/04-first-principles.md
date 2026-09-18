@@ -10,6 +10,6 @@ That answer becomes the README's first paragraph. If you can't write that paragr
 
 Concrete examples already locked:
 
-- **Vigil**: "are my dependencies maintained?" is the human question. The first-principles answer is the Necrometer/Seance fate table. Don't decorate it with CVEs, secrets, or AI-agent signals (those go in **Boneyard**, not Vigil).
+- **Vigil**: "are my dependencies maintained?" is the human question. The first-principles answer is the upstream commit velocity and dormancy heuristic. Don't decorate it with CVEs, secrets, or AI-agent signals (those go in **Boneyard**, not Vigil).
 - **Boneyard**: "is this repo safe to keep alive?" — answer is the dormancy index plus a small number of explicitly enumerated risk axes. The four non-dormancy axes in v0.1.0 are honest about being proxies (`source` field says so). v0.2.0 turns the proxies into real input pipelines.
 - **Snip**: "is the code that was generated safe to ship?" — a static analyzer for AI-generated diffs. Don't conflate with general SAST; that's Snyk / Semgrep / Aikido. Snip owns the AI-generated diff slice.
