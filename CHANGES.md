@@ -4,6 +4,18 @@ All notable changes to the studio2201 product framework are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/) 1.1.0.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.2.2] — 2026-09-18
+
+### Fixed
+- Fixed naive string extraction in `snip serve` MCP JSON-RPC server with an escape-aware JSON string parser (`\"`, `\\`, `\n`, `\t`, `\r`) and strict tool name validation (`snip_audit`).
+- Fixed diagnostic output routing in `doctor` subcommand across all 5 applications (`vigil`, `snip`, `boneyard`, `aegis`, `proven`) to honor `-o <FILE>` with standard POSIX 0644 mode.
+- Fixed masked assertion in E2E cross-feature combo test suite.
+- Re-baselined reproducible release binary hashes across all 5 applications.
+
+### Added
+- Tracked universal installer `install.sh` in umbrella repository with isolated update and upgrade capabilities.
+- Synchronized all 5 application submodule gitlinks to v0.2.1 release heads.
+
 ## [1.2.1] — 2026-09-18
 
 ### Added
