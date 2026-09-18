@@ -4,6 +4,17 @@ All notable changes to the studio2201 product framework are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/) 1.1.0.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.2.6] — 2026-09-18
+
+### Added
+- Expanded documentation and problem descriptions across all tool READMEs with authoritative citations:
+  - Proven: OpenSSF SLSA v1.0, NIST FIPS 204 (ML-DSA), White House EO 14028.
+  - Aegis: White House OMB M-26-15, NSM-10, NIST FIPS 203/204, NSA CNSA 2.0.
+  - Snip: GitGuardian Secrets Sprawl research, OWASP Top 10 for LLMs, Supabase RLS policies, MCP protocol.
+  - Vigil: CISA OSS Security Roadmap, Harvard/LF Census III, OpenSSF Scorecards.
+  - Boneyard: Stripe Developer Coefficient report, ACM Empirical Software Engineering, Gartner debt framework.
+- Synchronized all 5 application submodules to v0.2.5 release heads.
+
 ## [1.2.5] — 2026-09-18
 
 ### Added
