@@ -2,7 +2,7 @@
 
 
 
-This is the studio2201 doctrine's signature constraint, copied from openOODA's ≤ 256 LoC rule for `.oo`/`.oot` files. Apply it without negotiation.
+This is the studio2201 doctrine's signature constraint. Apply it without negotiation.
 
 **Why:** a file you can read in one screen is a file you can audit, review, hand to a new contributor, and replace. The cost of a long file is always paid later by someone you don't know yet.
 

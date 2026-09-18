@@ -16,7 +16,7 @@ This directory replaces the single-file `PRODUCTS.md`. One section per file,
 | §6 | Blue ocean | [06-blue-ocean.md](06-blue-ocean.md) |
 | §7 | Functional splits | [07-functional-splits.md](07-functional-splits.md) |
 | §8 | Naming | [08-naming.md](08-naming.md) |
-| §9 | Substrate (openOODA) | [09-substrate.md](09-substrate.md) |
+| §9 | Pure Rust (no substrate) | [09-substrate.md](09-substrate.md) |
 | §10 | Release cadence | [10-release-cadence.md](10-release-cadence.md) |
 | §11 | What gets inherited | [11-inherited.md](11-inherited.md) |
 | §12 | From scratch | [12-from-scratch.md](12-from-scratch.md) |
@@ -40,8 +40,6 @@ ships the same six files; only the content varies:
 | `tools/perf/budget.md` | §18 |
 | `tools/perf/bench.rs` (as `#[test]`) | §18 |
 | `CHANGES.md` | All four (audit trail) |
-
-The doctrine-level substrate matrix is at [`../COMPATIBILITY.md`](../COMPATIBILITY.md).
 
 ## Reading order
 

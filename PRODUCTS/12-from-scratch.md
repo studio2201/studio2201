@@ -14,9 +14,8 @@ The principle: an AI agent (or a new Rust engineer) reading the Rust Book should
 |---|---|
 | `std::*` — anything in Rust's standard library | Yes, always. |
 | `vendor/<name>.rs` — single-file public-domain implementations inlined at build time | Yes, when the spec is small and stable. JSON parser, regex VM, TOML parser for the specific dialect we use. Each gets a header comment citing origin and license. |
-| `oodar/sec/pqc/{mldsa,mlkem,pq_sig}` — C code already in the openOODA substrate | Yes. This is the substrate, not a vendored crate. Linking it via `extern "C"` is normal substrate consumption, not a dependency. |
-| `oodar/sec/landlock`, `oodar/sec/cap` | Yes. Same logic — the substrate is what we ship on top of. |
 | `crates.io` dependencies | **No.** |
+| Any other external library (e.g. an `extern "C"` against an out-of-tree `.so` or `.a`) | **No.** |
 
 ### What this means in practice
 
@@ -58,6 +57,6 @@ That's §12. It's the spine of the framework. Without it, everything else in `PR
 
 **The first sentence of every product README must say, in plain English:**
 
-> *"This product answers one question: [§0 question]. It is built on [openOODA substrate primitives]. Status: [pre-release scaffold | v0.x.0 | 1.0.0]. License: Apache-2.0. Deps: zero crates.io."*
+> *"This product answers one question: [§0 question]. It is written in Rust against `std::` only. Status: [pre-release scaffold | v0.x.0 | 1.0.0]. License: Apache-2.0. Deps: zero crates.io."*
 
 If a README can't lead with that sentence, the service isn't ready to be a product.
