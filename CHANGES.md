@@ -4,6 +4,13 @@ All notable changes to the studio2201 product framework are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/) 1.1.0.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.2.3] — 2026-09-18
+
+### Changed
+- Synchronized all 5 application submodules (`vigil`, `snip`, `boneyard`, `aegis`, `proven`) to v0.2.2.
+- Updated `update` and `upgrade` CLI commands across all 5 applications with semver comparison and `--format json` / `-o <FILE>` redirection support.
+- Fully verified 135/135 tests passing across all 4 tiers in automated E2E test suite.
+
 ## [1.2.2] — 2026-09-18
 
 ### Fixed
