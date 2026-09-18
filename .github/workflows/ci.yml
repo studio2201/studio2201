@@ -1,15 +1,32 @@
-name: Standard CI
+name: CI
 
 on:
   push:
-    branches: [ "master", "main" ]
+    branches: [ master ]
   pull_request:
-    branches: [ "master", "main" ]
+    branches: [ master ]
 
 jobs:
-  build:
+  verify:
+    name: Verify Doctrine, Submodules & Installer
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - name: Run checks
-      run: echo "Replace with actual build/test commands"
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Verify Installer Syntax
+        run: sh -n install.sh
+
+      - name: Verify Doctrine <= 256 LOC Limit
+        run: |
+          find . -maxdepth 3 -type f \( -name "*.rs" -o -name "*.sh" -o -name "*.md" \) ! -path "*/target/*" ! -path "*/.git/*" | while read -r file; do
+            lines=$(wc -l < "$file")
+            if [ "$lines" -gt 256 ]; then
+              echo "Error: $file exceeds 256 lines ($lines lines)"
+              exit 1
+            fi
+          done

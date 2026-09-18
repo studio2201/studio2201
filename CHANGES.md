@@ -4,6 +4,14 @@ All notable changes to the studio2201 product framework are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/) 1.1.0.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.2.4] — 2026-09-18
+
+### Added
+- Created reusable composite GitHub Actions (`action.yml`) in `vigil`, `snip`, `boneyard`, `aegis`, and `proven`.
+- Added GitHub Actions CI workflows (`.github/workflows/ci.yml`) across all repositories with automated testing, line count audits, and reproducibility verification.
+- Added comprehensive status, release, license, pure std, max LOC, and reproducibility badges to all `README.md` files across the ecosystem.
+- Synchronized all 5 application submodules to v0.2.3 release heads.
+
 ## [1.2.3] — 2026-09-18
 
 ### Changed
