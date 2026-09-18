@@ -4,6 +4,18 @@ All notable changes to the studio2201 product framework are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/) 1.1.0.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.2.5] — 2026-09-18
+
+### Added
+- Added domain and tool-specific badges across all application READMEs:
+  - Vigil: Dormancy Index, Supply-Chain Health, Manifest Support, and Policy Gate.
+  - Snip: Vibe-Safe SHIP verdict, Security Gate, MCP protocol, and Secret Leak audit.
+  - Boneyard: Boneyard Index, Debt Budget in repo-weeks, and Radar Scoring.
+  - Aegis: PQC Readiness, OMB M-26-15 compliance, and NIST FIPS standards.
+  - Proven: SLSA Level 3+ provenance, ML-DSA-65 signature, and Merkle root verification.
+- Added comprehensive tool badge matrix to parent repository README.
+- Synchronized all 5 application submodules to v0.2.4 release heads.
+
 ## [1.2.4] — 2026-09-18
 
 ### Added
