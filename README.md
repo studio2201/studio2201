@@ -58,7 +58,7 @@ jobs:
 
 | Product | Focus | Tool-Specific Badge | Action / CI | Version |
 | :--- | :--- | :--- | :--- | :--- |
-| [**Vigil**](vigil/) | Supply-chain dormancy scanner | [![Dormancy](https://img.shields.io/badge/dormancy-healthy-2f6f5e.svg)](vigil/) | [![CI](https://github.com/studio2201/vigil/actions/workflows/ci.yml/badge.svg?branch=master)](vigil/) | `v0.2.7` |
+| [**Vigil**](vigil/) | Supply-chain dormancy scanner | [![Dormancy](https://img.shields.io/badge/dormancy-healthy-2f6f5e.svg)](vigil/) | [![CI](https://github.com/studio2201/vigil/actions/workflows/ci.yml/badge.svg?branch=master)](vigil/) | `v0.2.8` |
 | [**Snip**](snip/) | Vibe-code security gate | [![Vibe-Safe](https://img.shields.io/badge/vibe--safe-SHIP-brightgreen.svg)](snip/) | [![CI](https://github.com/studio2201/snip/actions/workflows/ci.yml/badge.svg?branch=master)](snip/) | `v0.2.7` |
 | [**Boneyard**](boneyard/) | Org-wide tech-debt radar | [![Boneyard](https://img.shields.io/badge/boneyard%20index-0%2F100-brightgreen.svg)](boneyard/) | [![CI](https://github.com/studio2201/boneyard/actions/workflows/ci.yml/badge.svg?branch=master)](boneyard/) | `v0.2.7` |
 | [**Aegis**](aegis/) | PQC migration SDK & scanner | [![PQC](https://img.shields.io/badge/PQC-Quantum--Safe-blueviolet.svg)](aegis/) | [![CI](https://github.com/studio2201/aegis/actions/workflows/ci.yml/badge.svg?branch=master)](aegis/) | `v0.2.7` |
