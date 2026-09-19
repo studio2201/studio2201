@@ -2,7 +2,7 @@
 
 <div align="center">
 
-[![Release](https://img.shields.io/badge/version-v1.3.14-blue.svg)](https://github.com/studio2201/studio2201/releases)
+[![Release](https://img.shields.io/badge/version-v1.3.15-blue.svg)](https://github.com/studio2201/studio2201/releases)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 
 | Security Pillar | Verification Badge |
@@ -56,12 +56,7 @@ Add 5 dedicated GitHub Actions workflows to this repository (.github/workflows/<
 - proven.yml (name: proven, tools: 'proven' — ML-DSA-65 attestations)
 - boneyard.yml (name: boneyard, tools: 'boneyard' — tech-debt radar)
 All workflows trigger on pull_request, push to master/main, and workflow_dispatch,
-use studio2201/studio2201@v1 with fail-on: 'block', and retain *_report.md.
-Add 1 dynamic Shields.io workflow status badge per tool to README.md (replace <owner>/<repo>):
-[![snip][b-snip]][ci-snip]
-[b-snip]: https://img.shields.io/github/actions/workflow/status/<owner>/<repo>/snip.yml?label=snip&logo=shield
-[ci-snip]: https://github.com/<owner>/<repo>/actions/workflows/snip.yml
-(Repeat identical pattern for vigil, aegis, proven, boneyard)
+Embed the studio2201 Governance Scorecard table centered at the top of README.md (specs: studio2201.com/agents).
 ```
 
 ### GitHub Actions Workflow

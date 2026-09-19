@@ -4,6 +4,12 @@ All notable changes to the studio2201 product framework are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/) 1.1.0.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.3.15] — 2026-09-19
+ 
+### Changed
+- Purged all dynamic badge alternatives across suite; standardized solely on the Centered Scorecard table.
+- Synchronized all child submodules (snip v0.2.11, vigil v0.2.13, aegis v0.2.12, proven v0.2.11, boneyard v0.2.12).
+ 
 ## [1.3.14] — 2026-09-19
 
 ### Changed
