@@ -4,6 +4,11 @@ All notable changes to the studio2201 product framework are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/) 1.1.0.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.3.7] — 2026-09-19
+
+### Fixed
+- Fixed pipefail abort on grep in `action.yml` when reports have zero violations.
+
 ## [1.3.6] — 2026-09-19
 
 ### Changed

@@ -232,7 +232,7 @@ runs:
 
         # Emit GitHub Actions Workflow Inline Annotations on PR Diffs
         if [ -f snip_report.md ]; then
-          grep -E '^\s*\[(CRITICAL|HIGH|MEDIUM|LOW)\]' snip_report.md 2>/dev/null | while IFS= read -r l; do
+          (grep -E '^\s*\[(CRITICAL|HIGH|MEDIUM|LOW)\]' snip_report.md 2>/dev/null || true) | while IFS= read -r l; do
             lvl=$(echo "$l" | sed -n 's/^[[:space:]]*\[\([A-Za-z]*\)\].*/\1/p')
             loc=$(echo "$l" | sed -n 's/^[[:space:]]*\[[^]]*\] \([^—]*\) —.*/\1/p' | tr -d ' ')
             msg=$(echo "$l" | sed -n 's/.* — //p')
@@ -240,7 +240,7 @@ runs:
           done
         fi
         if [ -f vigil_report.md ] && [ -n "${MANIFEST:-}" ]; then
-          grep -E 'exceeds max dormancy' vigil_report.md 2>/dev/null | while IFS= read -r l; do
+          (grep -E 'exceeds max dormancy' vigil_report.md 2>/dev/null || true) | while IFS= read -r l; do
             echo "::error file=${MANIFEST},title=Vigil Abandoned Dependency::${l}"
           done
         fi
