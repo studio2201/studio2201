@@ -4,6 +4,12 @@ All notable changes to the studio2201 product framework are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/) 1.1.0.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.3.10] — 2026-09-19
+
+### Changed
+- Refactored AI agent instructions to 1 dedicated workflow and dynamic badge per app.
+- Added dedicated GitHub Actions workflows for snip, vigil, aegis, proven, and boneyard.
+
 ## [1.3.9] — 2026-09-19
 
 ### Changed

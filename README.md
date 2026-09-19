@@ -1,34 +1,40 @@
 # studio2201
 
-[![studio2201 Suite](https://img.shields.io/badge/studio2201-5%2F5%20Verified-2f6f5e?logo=shield)](https://studio2201.com/agents#badges)
-[![Release](https://img.shields.io/badge/version-v1.3.9-blue.svg)](https://github.com/studio2201/studio2201/releases)
+[![snip][badge-snip]][action-snip]
+[![vigil][badge-vigil]][action-vigil]
+[![aegis][badge-aegis]][action-aegis]
+[![proven][badge-proven]][action-proven]
+[![boneyard][badge-boneyard]][action-boneyard]
+[![Release](https://img.shields.io/badge/version-v1.3.10-blue.svg)](https://github.com/studio2201/studio2201/releases)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 
-<details>
-<summary>
-  <a href="https://studio2201.com/agents#badges">
-    <img src="https://img.shields.io/badge/studio2201-5%2F5%20Verified-2f6f5e?logo=shield" alt="studio2201 Suite">
-  </a> <b>Detailed Governance Scorecard</b>
-</summary>
+[badge-snip]: https://img.shields.io/github/actions/workflow/status/studio2201/studio2201/snip.yml?label=snip&logo=shield
+[action-snip]: https://github.com/studio2201/studio2201/actions/workflows/snip.yml
+[badge-vigil]: https://img.shields.io/github/actions/workflow/status/studio2201/studio2201/vigil.yml?label=vigil&logo=shield
+[action-vigil]: https://github.com/studio2201/studio2201/actions/workflows/vigil.yml
+[badge-aegis]: https://img.shields.io/github/actions/workflow/status/studio2201/studio2201/aegis.yml?label=aegis&logo=shield
+[action-aegis]: https://github.com/studio2201/studio2201/actions/workflows/aegis.yml
+[badge-proven]: https://img.shields.io/github/actions/workflow/status/studio2201/studio2201/proven.yml?label=proven&logo=shield
+[action-proven]: https://github.com/studio2201/studio2201/actions/workflows/proven.yml
+[badge-boneyard]: https://img.shields.io/github/actions/workflow/status/studio2201/studio2201/boneyard.yml?label=boneyard&logo=shield
+[action-boneyard]: https://github.com/studio2201/studio2201/actions/workflows/boneyard.yml
 
-| Tool | Focus | Verdict | Status Badge |
+<details>
+<summary><b>Detailed 5-Tool Governance Scorecard</b></summary>
+
+| Tool | Focus | Workflow Status | Action |
 | :--- | :--- | :---: | :---: |
-| [**Snip**][u-snip] | Vibe-Code & Secrets Gate | `SHIP` | [![Vibe-Safe][b-snip]][u-snip] |
-| [**Vigil**][u-vigil] | Supply-Chain Dormancy | `HEALTHY` | [![Dormancy][b-vigil]][u-vigil] |
-| [**Aegis**][u-aegis] | PQC & Post-Quantum Scans | `QUANTUM-SAFE` | [![PQC][b-aegis]][u-aegis] |
-| [**Proven**][u-proven] | ML-DSA-65 Attestation | `VERIFIED` | [![SLSA][b-proven]][u-proven] |
-| [**Boneyard**][u-boneyard] | Tech-Debt Radar | `0/100 DEBT` | [![Boneyard][b-boneyard]][u-boneyard] |
+| [**Snip**][u-snip] | Vibe-Code & Secrets Gate | [![snip][badge-snip]][action-snip] | `tools: 'snip'` |
+| [**Vigil**][u-vigil] | Supply-Chain Dormancy | [![vigil][badge-vigil]][action-vigil] | `tools: 'vigil'` |
+| [**Aegis**][u-aegis] | PQC & Post-Quantum Scans | [![aegis][badge-aegis]][action-aegis] | `tools: 'aegis'` |
+| [**Proven**][u-proven] | ML-DSA-65 Attestation | [![proven][badge-proven]][action-proven] | `tools: 'proven'` |
+| [**Boneyard**][u-boneyard] | Tech-Debt Radar | [![boneyard][badge-boneyard]][action-boneyard] | `tools: 'boneyard'` |
 
 [u-snip]: https://studio2201.com/snip
 [u-vigil]: https://studio2201.com/vigil
 [u-aegis]: https://studio2201.com/aegis
 [u-proven]: https://studio2201.com/proven
 [u-boneyard]: https://studio2201.com/boneyard
-[b-snip]: https://img.shields.io/badge/vibe--safe-SHIP-brightgreen.svg
-[b-vigil]: https://img.shields.io/badge/dormancy-healthy-2f6f5e.svg
-[b-aegis]: https://img.shields.io/badge/PQC-Quantum--Safe-blueviolet.svg
-[b-proven]: https://img.shields.io/badge/SLSA-Level%203%2B-blue.svg
-[b-boneyard]: https://img.shields.io/badge/boneyard%20index-0%2F100-brightgreen.svg
 
 </details>
 
@@ -37,90 +43,61 @@ Parent framework and composite security governance gate for the studio2201 ecosy
 ## Why Automated CI Enforcement Is Needed
 
 Software supply-chain attacks and code vulnerabilities have migrated upstream:
-
-- **Upstream Supply-Chain Sabotage**: High-profile incidents like XZ Utils
-  (CVE-2024-3094), SolarWinds, and `colors.js` prove that malicious compromise
-  often enters through dormant dependencies, build-phase injection, or
-  compromised maintainer accounts.
-- **AI Vibe-Coding Secrets & SQL Exposure**: AI assistants (Cursor, Claude Code,
-  Copilot) generate code rapidly, but GitGuardian research shows AI-generated
-  commits leak production secrets at more than double human rates (3.2% vs 1.5%),
-  while omitting database Row Level Security (RLS).
-- **Post-Quantum Cryptographic Mandates**: Under White House OMB M-26-15 and
-  NIST FIPS 203/204, classical RSA and ECC algorithms must transition to
-  post-quantum standards (ML-KEM, ML-DSA) by 2030 to neutralize "Harvest Now,
-  Decrypt Later" threats.
-- **Automated CI Gates vs Manual Discipline**: Human developer discipline
-  inevitably degrades under delivery deadlines. Automated GitHub Actions gates
-  provide non-bypassable, fail-closed enforcement on every pull request before
-  code merges.
+- **LLM-generated credential exposure**: AI coding tools leak API keys at more than double human rates.
+- **Unmaintained dependencies**: Over 80% of open-source components carry dormant risks.
+- **Cryptographic obsolescence**: Classical algorithms face imminent quantum decryption (OMB M-26-15).
+- **Automated enforcement**: Security discipline degrades under deadlines. Automated GitHub Actions gates
+  provide non-bypassable, fail-closed enforcement on every pull request before code merges.
 
 ## Autonomous Agent Integration
 
-Deploy the unified multi-tool security gate directly through your AI coding assistant or copy the workflow below into your repository.
+Deploy dedicated security workflows directly through your AI coding assistant:
 
 ### Prompt for your AI Agent
 
 Copy and paste this instruction directly to Cursor, Claude Code, Copilot Workspace, or Devin:
 
 ```text
-Add a GitHub Actions workflow to this repository at .github/workflows/studio2201.yml using studio2201/studio2201@v1:
-- Triggers: pull_request, push to default branch (master/main), and workflow_dispatch.
-- Concurrency: group ${{ github.workflow }}-${{ github.ref }} with cancel-in-progress on pull_request.
-- Permissions: contents: read, checkout with fetch-depth: 0.
-- Action: run studio2201/studio2201@v1 with tools: 'snip,vigil,aegis' and fail-on: 'block'.
-- Artifacts: upload *_report.md using actions/upload-artifact@v4 with if: always().
-- Zero False Positives: @v1 provisions Vigil v0.2.11+ (excludes root crates) & Aegis v0.2.10+ (skips comments).
-- README Badge: add dynamic Shields.io workflow status badge to top of README.md (replace <owner>/<repo>):
-  [![studio2201][badge]][ci]
-  [badge]: https://img.shields.io/github/actions/workflow/status/<owner>/<repo>/studio2201.yml?label=studio2201&logo=shield
-  [ci]: https://github.com/<owner>/<repo>/actions/workflows/studio2201.yml
+Add 5 dedicated GitHub Actions workflows to this repository (.github/workflows/<tool>.yml):
+- snip.yml (name: snip, tools: 'snip' — diffs, secrets, Supabase RLS)
+- vigil.yml (name: vigil, tools: 'vigil' — dependency dormancy, excludes root crates)
+- aegis.yml (name: aegis, tools: 'aegis' — post-quantum crypto, skips comments)
+- proven.yml (name: proven, tools: 'proven' — ML-DSA-65 attestations)
+- boneyard.yml (name: boneyard, tools: 'boneyard' — tech-debt radar)
+All workflows trigger on pull_request, push to master/main, and workflow_dispatch,
+use studio2201/studio2201@v1 with fail-on: 'block', and retain *_report.md.
+Add 1 dynamic Shields.io workflow status badge per tool to README.md (replace <owner>/<repo>):
+[![snip][b-snip]][ci-snip]
+[b-snip]: https://img.shields.io/github/actions/workflow/status/<owner>/<repo>/snip.yml?label=snip&logo=shield
+[ci-snip]: https://github.com/<owner>/<repo>/actions/workflows/snip.yml
+(Repeat identical pattern for vigil, aegis, proven, boneyard)
 ```
 
 ### GitHub Actions Workflow
 
-Commit this minimal, zero-maintenance workflow at `.github/workflows/studio2201.yml`:
+Reference template for `.github/workflows/<tool>.yml` (replace `<tool>` with snip, vigil, aegis, proven, boneyard):
 
 ```yaml
-name: studio2201 Security Gate
+name: snip
 on:
-  push:
-    branches: [ master, main ]
-  pull_request:
-    branches: [ master, main ]
+  push: { branches: [ master, main ] }
+  pull_request: { branches: [ master, main ] }
   workflow_dispatch:
-
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
-
-permissions:
-  contents: read
-
+permissions: { contents: read }
 jobs:
-  security-gate:
-    name: studio2201 Security Gate
+  snip:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Run studio2201 Security Gate
-        uses: studio2201/studio2201@v1
-        with:
-          tools: 'snip,vigil,aegis'
-          fail-on: 'block'
-
-      - name: Retain Audit Findings
-        uses: actions/upload-artifact@v4
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: studio2201/studio2201@v1
+        with: { tools: 'snip', fail-on: 'block' }
+      - uses: actions/upload-artifact@v4
         if: always()
-        with:
-          name: studio2201-audit-findings
-          path: |
-            *_report.md
-          if-no-files-found: ignore
+        with: { name: snip-report, path: snip_report.md, if-no-files-found: ignore }
 ```
 
 ## Five Products & Tool Status
