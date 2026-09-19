@@ -4,6 +4,12 @@ All notable changes to the studio2201 product framework are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/) 1.1.0.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.3.4] — 2026-09-19
+
+### Changed
+- Updated Vigil submodule to v0.2.9 with streamlined README.
+- Updated Vigil release version in product table to v0.2.9.
+
 ## [1.3.3] — 2026-09-19
 
 ### Changed
