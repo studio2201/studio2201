@@ -91,7 +91,10 @@ runs:
         # 2. Vigil Dependency Dormancy
         if [[ "${{ inputs.tools }}" == "all" || "${{ inputs.tools }}" =~ "vigil" ]]; then
           echo "==> Running Vigil manifest scan..."
-          MANIFEST=$(find "$TARGET" -maxdepth 3 \( -name "Cargo.lock" -o -name "package.json" -o -name "requirements.txt" -o -name "go.mod" -o -name "Cargo.toml" \) 2>/dev/null | head -n 1)
+          MANIFEST=$(find "$TARGET" -maxdepth 3 \
+            \( -name "Cargo.lock" -o -name "package.json" \
+            -o -name "requirements.txt" -o -name "go.mod" \) \
+            2>/dev/null | head -n 1)
           if [ -n "$MANIFEST" ]; then
             set +e
             vigil scan "$MANIFEST" --format markdown > vigil_report.md 2>&1
@@ -221,16 +224,28 @@ runs:
             done
             echo ""
             echo "---"
-            echo "💡 **Tip:** Embed the studio2201 verification badge in your README:"
-            echo ""
+            echo "💡 **Tip:** Embed the studio2201 badge in your README:"
             echo "[![studio2201 Suite](https://img.shields.io/badge/studio2201-5%2F5%20Verified-2f6f5e?logo=shield)](https://studio2201.com/agents#badges)"
-            echo ""
-            echo '```markdown'
-            echo '[![studio2201 Suite](https://img.shields.io/badge/studio2201-5%2F5%20Verified-2f6f5e?logo=shield)](https://studio2201.com/agents#badges)'
-            echo '```'
-            echo ""
-            echo "See the [Badge Integration Guide](https://studio2201.com/agents#badges) for details."
+            echo "See the [Badge Integration Guide](https://studio2201.com/agents#badges)."
           } >> "$GITHUB_STEP_SUMMARY"
+        fi
+
+        # Emit GitHub Actions Workflow Inline Annotations on PR Diffs
+        if [ -f snip_report.md ]; then
+          grep -E '^\s*\[(CRITICAL|HIGH|MEDIUM|LOW)\]' snip_report.md 2>/dev/null | while IFS= read -r l; do
+            lvl=$(echo "$l" | sed -n 's/^[[:space:]]*\[\([A-Za-z]*\)\].*/\1/p')
+            loc=$(echo "$l" | sed -n 's/^[[:space:]]*\[[^]]*\] \([^—]*\) —.*/\1/p' | tr -d ' ')
+            msg=$(echo "$l" | sed -n 's/.* — //p')
+            [ -n "$loc" ] && echo "::error file=${loc%:*},line=${loc##*:},title=Snip ${lvl}::${msg}"
+          done
+        fi
+        if [ -f vigil_report.md ] && [ -n "${MANIFEST:-}" ]; then
+          grep -E 'exceeds max dormancy' vigil_report.md 2>/dev/null | while IFS= read -r l; do
+            echo "::error file=${MANIFEST},title=Vigil Abandoned Dependency::${l}"
+          done
+        fi
+        if [ "${TOOL_STATUS[aegis]:-}" = "🔴 NON-COMPLIANT" ]; then
+          echo "::error file=${TARGET},title=Aegis PQC Violation::Classical cryptography violates OMB M-26-15."
         fi
 
         if [ "$FAILED" -ne 0 ] && [ "${{ inputs.fail-on }}" = "block" ]; then
