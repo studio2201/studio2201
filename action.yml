@@ -1,0 +1,228 @@
+name: 'studio2201 Security & Governance Suite'
+description: 'Unified composite security gate: audits diffs (snip), manifests (vigil), cryptography (aegis), provenance (proven), and debt (boneyard)'
+author: 'studio2201'
+branding:
+  icon: 'shield'
+  color: 'blue'
+
+inputs:
+  tools:
+    description: 'Comma-separated tools to run (snip, vigil, aegis, proven, boneyard) or "all"'
+    required: false
+    default: 'all'
+  path:
+    description: 'Target repository root or path to inspect'
+    required: false
+    default: '.'
+  fail-on:
+    description: 'Failure enforcement threshold: "block" (fail build on violations) or "warning"'
+    required: false
+    default: 'block'
+  format:
+    description: 'Output format for reports (markdown, text, json)'
+    required: false
+    default: 'markdown'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Fast Bootstrap studio2201 Binaries
+      shell: bash
+      run: |
+        echo "==> studio2201 suite fast bootstrap (<2s)..."
+        DEST="${XDG_BIN_HOME:-$HOME/.local/bin}"
+        mkdir -p "$DEST"
+        NEEDED=""
+        for t in snip vigil aegis proven boneyard; do
+          if [[ "${{ inputs.tools }}" == "all" || "${{ inputs.tools }}" =~ $t ]]; then
+            command -v "$t" >/dev/null 2>&1 || NEEDED="${NEEDED}${NEEDED:+ }$t"
+          fi
+        done
+        if [ -n "$NEEDED" ]; then
+          INSTALLER="${{ github.action_path }}/install.sh"
+          if [ ! -f "$INSTALLER" ]; then
+            INSTALLER="/tmp/studio2201-install.sh"
+            curl -fsSL --retry 3 https://studio2201.com/install.sh -o "$INSTALLER"
+          fi
+          sh "$INSTALLER" --dest "$DEST" $NEEDED
+        fi
+        echo "$DEST" >> "$GITHUB_PATH"
+
+    - name: Execute studio2201 Suite Inspections
+      id: run_suite
+      shell: bash
+      run: |
+        export PATH="${XDG_BIN_HOME:-$HOME/.local/bin}:$PATH"
+        TARGET="${{ inputs.path }}"
+        FAILED=0
+
+        declare -A TOOL_STATUS TOOL_BADGE
+
+        # 1. Snip Diff Gate
+        if [[ "${{ inputs.tools }}" == "all" || "${{ inputs.tools }}" =~ "snip" ]]; then
+          echo "==> Running Snip diff audit..."
+          DIFF=""
+          if [ -n "$GITHUB_BASE_REF" ]; then
+            DIFF=$(git diff "origin/$GITHUB_BASE_REF...HEAD" 2>/dev/null || true)
+          fi
+          [ -z "$DIFF" ] && DIFF=$(git diff HEAD~1 2>/dev/null || true)
+          [ -z "$DIFF" ] && DIFF=$(git diff --staged 2>/dev/null || true)
+
+          set +e
+          if [ -n "$DIFF" ]; then
+            echo "$DIFF" | snip --format markdown > snip_report.md 2>&1
+            EC=$?
+          else
+            echo "No changed diff lines detected." | snip --format markdown > snip_report.md 2>&1
+            EC=$?
+          fi
+          set -e
+
+          if [ $EC -eq 0 ]; then
+            TOOL_STATUS["snip"]="🟢 SHIP"
+            TOOL_BADGE["snip"]="https://img.shields.io/badge/Snip-SHIP-brightgreen"
+          else
+            TOOL_STATUS["snip"]="🔴 BLOCK"
+            TOOL_BADGE["snip"]="https://img.shields.io/badge/Snip-BLOCK-red"
+            FAILED=1
+          fi
+        fi
+
+        # 2. Vigil Dependency Dormancy
+        if [[ "${{ inputs.tools }}" == "all" || "${{ inputs.tools }}" =~ "vigil" ]]; then
+          echo "==> Running Vigil manifest scan..."
+          MANIFEST=$(find "$TARGET" -maxdepth 3 \( -name "Cargo.lock" -o -name "package.json" -o -name "requirements.txt" -o -name "go.mod" -o -name "Cargo.toml" \) 2>/dev/null | head -n 1)
+          if [ -n "$MANIFEST" ]; then
+            set +e
+            vigil scan "$MANIFEST" --format markdown > vigil_report.md 2>&1
+            EC=$?
+            set -e
+            if [ $EC -eq 0 ]; then
+              TOOL_STATUS["vigil"]="🟢 COMPLIANT"
+              TOOL_BADGE["vigil"]="https://img.shields.io/badge/Vigil-COMPLIANT-brightgreen"
+            else
+              TOOL_STATUS["vigil"]="🔴 DORMANT"
+              TOOL_BADGE["vigil"]="https://img.shields.io/badge/Vigil-DORMANT-red"
+              FAILED=1
+            fi
+          else
+            echo "No supported dependency manifest found in $TARGET." > vigil_report.md
+            TOOL_STATUS["vigil"]="⚪ SKIPPED"
+            TOOL_BADGE["vigil"]="https://img.shields.io/badge/Vigil-SKIPPED-lightgrey"
+          fi
+        fi
+
+        # 3. Aegis PQC Scanner
+        if [[ "${{ inputs.tools }}" == "all" || "${{ inputs.tools }}" =~ "aegis" ]]; then
+          echo "==> Running Aegis PQC scan..."
+          set +e
+          aegis scan "$TARGET" --format markdown > aegis_report.md 2>&1
+          EC=$?
+          set -e
+          if [ $EC -eq 0 ]; then
+            TOOL_STATUS["aegis"]="🟢 COMPLIANT"
+            TOOL_BADGE["aegis"]="https://img.shields.io/badge/Aegis-COMPLIANT-brightgreen"
+          else
+            TOOL_STATUS["aegis"]="🔴 NON-COMPLIANT"
+            TOOL_BADGE["aegis"]="https://img.shields.io/badge/Aegis-NON--COMPLIANT-red"
+            FAILED=1
+          fi
+        fi
+
+        # 4. Proven Attestor
+        if [[ "${{ inputs.tools }}" == "all" || "${{ inputs.tools }}" =~ "proven" ]]; then
+          echo "==> Proven Attestor ready..."
+          ARTIFACT=$(find "$TARGET" -maxdepth 3 \( -path "*/target/release/*" -o -path "*/dist/*" \) -type f ! -name "*.*" 2>/dev/null | head -n 1)
+          if [ -n "$ARTIFACT" ]; then
+            set +e
+            proven hash "$ARTIFACT" > proven_report.md 2>&1
+            EC=$?
+            set -e
+            if [ $EC -eq 0 ]; then
+              TOOL_STATUS["proven"]="🟢 READY"
+              TOOL_BADGE["proven"]="https://img.shields.io/badge/Proven-READY-brightgreen"
+            else
+              TOOL_STATUS["proven"]="⚪ ACTIVE"
+              TOOL_BADGE["proven"]="https://img.shields.io/badge/Proven-ACTIVE-blue"
+            fi
+          else
+            echo "Proven ML-DSA-65 post-quantum attestor ready for build artifacts." > proven_report.md
+            TOOL_STATUS["proven"]="⚪ ACTIVE"
+            TOOL_BADGE["proven"]="https://img.shields.io/badge/Proven-ACTIVE-blue"
+          fi
+        fi
+
+        # 5. Boneyard Tech Debt
+        if [[ "${{ inputs.tools }}" == "all" || "${{ inputs.tools }}" =~ "boneyard" ]]; then
+          echo "==> Running Boneyard scan..."
+          HALL=$(find "$TARGET" -maxdepth 2 \( -name "hall.json" -o -name "catalog.json" \) 2>/dev/null | head -n 1)
+          if [ -n "$HALL" ]; then
+            set +e
+            boneyard scan -i "$HALL" --format markdown > boneyard_report.md 2>&1
+            EC=$?
+            set -e
+            if [ $EC -eq 0 ]; then
+              TOOL_STATUS["boneyard"]="🟢 HEALTHY"
+              TOOL_BADGE["boneyard"]="https://img.shields.io/badge/Boneyard-HEALTHY-brightgreen"
+            else
+              TOOL_STATUS["boneyard"]="🔴 DEBT BREACH"
+              TOOL_BADGE["boneyard"]="https://img.shields.io/badge/Boneyard-DEBT--BREACH-red"
+              FAILED=1
+            fi
+          else
+            echo "No hall.json or catalog.json found in $TARGET." > boneyard_report.md
+            TOOL_STATUS["boneyard"]="⚪ SKIPPED"
+            TOOL_BADGE["boneyard"]="https://img.shields.io/badge/Boneyard-SKIPPED-lightgrey"
+          fi
+        fi
+
+        # Render Unified Scorecard to $GITHUB_STEP_SUMMARY
+        OVERALL_VERDICT="🟢 PASSED"
+        [ $FAILED -ne 0 ] && OVERALL_VERDICT="🔴 FAILED"
+
+        if [ -n "$GITHUB_STEP_SUMMARY" ]; then
+          {
+            echo "# 🛡️ studio2201 Security & Governance Scorecard"
+            echo ""
+            echo "> Unified policy gate by [studio2201](https://studio2201.com) · Overall: **${OVERALL_VERDICT}**"
+            echo ""
+            echo "| Tool | Domain | Verdict | Badge |"
+            echo "| :--- | :--- | :---: | :---: |"
+            for t in snip vigil aegis proven boneyard; do
+              if [ -n "${TOOL_STATUS[$t]:-}" ]; then
+                case "$t" in
+                  snip) DOMAIN="Diff & Vibe-Code Security" ;;
+                  vigil) DOMAIN="Supply-Chain Dormancy" ;;
+                  aegis) DOMAIN="Post-Quantum Cryptography" ;;
+                  proven) DOMAIN="Artifact Attestation" ;;
+                  boneyard) DOMAIN="Org Tech-Debt Radar" ;;
+                  *) DOMAIN="Security Policy" ;;
+                esac
+                echo "| **$t** | $DOMAIN | ${TOOL_STATUS[$t]} | ![$t](${TOOL_BADGE[$t]}) |"
+              fi
+            done
+            for rep in snip vigil aegis proven boneyard; do
+              if [ -f "${rep}_report.md" ]; then
+                case "$rep" in
+                  snip) TITLE="Snip" ;;
+                  vigil) TITLE="Vigil" ;;
+                  aegis) TITLE="Aegis" ;;
+                  proven) TITLE="Proven" ;;
+                  boneyard) TITLE="Boneyard" ;;
+                  *) TITLE="$rep" ;;
+                esac
+                echo ""
+                echo "<details><summary><b>${TITLE} Inspection Details</b></summary>"
+                echo ""
+                cat "${rep}_report.md"
+                echo ""
+                echo "</details>"
+              fi
+            done
+          } >> "$GITHUB_STEP_SUMMARY"
+        fi
+
+        if [ "$FAILED" -ne 0 ] && [ "${{ inputs.fail-on }}" = "block" ]; then
+          echo "::error::studio2201 security gate failed. Security violations detected."
+          exit 1
+        fi

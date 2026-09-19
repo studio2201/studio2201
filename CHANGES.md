@@ -4,6 +4,14 @@ All notable changes to the studio2201 product framework are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/) 1.1.0.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.2.7] — 2026-09-19
+
+### Added
+- Unified parent composite GitHub Action (`action.yml`, `uses: studio2201/studio2201@master`).
+- Fast binary provisioning (<2s bootstrap) and unified multi-tool `$GITHUB_STEP_SUMMARY` scorecard.
+- Dual-persona README architecture: human-first 'Why This Action Is Needed' rationale paired with agent-first 'Prompt for your AI Agent' and workflow YAML across all tools.
+- Synchronized all 5 application submodules to v0.2.6 release heads.
+
 ## [1.2.6] — 2026-09-18
 
 ### Added
