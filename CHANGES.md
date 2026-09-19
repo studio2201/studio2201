@@ -4,6 +4,13 @@ All notable changes to the studio2201 product framework are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/) 1.1.0.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.3.6] — 2026-09-19
+
+### Changed
+- Hardened canonical AI agent prompt with full CI specifications across organization.
+- Resolved Vigil Cargo.lock root-crate parsing and Aegis comment-skipping false positives.
+- Synchronized submodules to latest releases (Vigil v0.2.11, Aegis v0.2.10, CLI v0.1.8).
+
 ## [1.3.5] — 2026-09-19
 
 ### Added
@@ -118,8 +125,10 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 ## [1.2.2] — 2026-09-18
 
 ### Fixed
-- Fixed naive string extraction in `snip serve` MCP JSON-RPC server with an escape-aware JSON string parser (`\"`, `\\`, `\n`, `\t`, `\r`) and strict tool name validation (`snip_audit`).
-- Fixed diagnostic output routing in `doctor` subcommand across all 5 applications (`vigil`, `snip`, `boneyard`, `aegis`, `proven`) to honor `-o <FILE>` with standard POSIX 0644 mode.
+- Fixed naive string extraction in `snip serve` MCP JSON-RPC server with an escape-aware
+  JSON string parser (`\"`, `\\`, `\n`, `\t`, `\r`) and strict tool name validation (`snip_audit`).
+- Fixed diagnostic output routing in `doctor` subcommand across all 5 applications
+  (`vigil`, `snip`, `boneyard`, `aegis`, `proven`) to honor `-o <FILE>` with standard POSIX 0644 mode.
 - Fixed masked assertion in E2E cross-feature combo test suite.
 - Re-baselined reproducible release binary hashes across all 5 applications.
 
