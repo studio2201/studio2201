@@ -4,6 +4,14 @@ All notable changes to the studio2201 product framework are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/) 1.1.0.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.2.8] — 2026-09-19
+
+### Added
+- Unified CLI & toolchain manager (`studio2201/cli`, `v0.1.0`) tracked as submodule.
+- Toolchain management verbs: `install`, `remove`, `upgrade`, `list`, `check`, `init`.
+- Universal installer (`install.sh`) upgraded to provision `studio2201` CLI alongside all 5 tools.
+- Scaffolding commands for automated `.github/workflows/studio2201.yml` and `AGENTS.md`.
+
 ## [1.2.7] — 2026-09-19
 
 ### Added

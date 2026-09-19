@@ -13,3 +13,6 @@
 [submodule "proven"]
 	path = proven
 	url = git@github.com:studio2201/proven.git
+[submodule "cli"]
+	path = cli
+	url = git@github.com:studio2201/cli.git
