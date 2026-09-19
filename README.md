@@ -1,7 +1,7 @@
 # studio2201
 
 [![studio2201 Suite](https://img.shields.io/badge/studio2201-5%2F5%20Verified-2f6f5e?logo=shield)](https://studio2201.com/agents#badges)
-[![Release](https://img.shields.io/badge/version-v1.3.6-blue.svg)](https://github.com/studio2201/studio2201/releases)
+[![Release](https://img.shields.io/badge/version-v1.3.8-blue.svg)](https://github.com/studio2201/studio2201/releases)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 
 <details>
@@ -64,12 +64,15 @@ Deploy the unified multi-tool security gate directly through your AI coding assi
 Copy and paste this instruction directly to Cursor, Claude Code, Copilot Workspace, or Devin:
 
 ```text
-Add a GitHub Actions workflow to this repository at .github/workflows/studio2201.yml using studio2201/studio2201@master.
+Add a GitHub Actions workflow to this repository at .github/workflows/studio2201.yml using studio2201/studio2201@v1.
 Trigger on pull_request and push to master/main, and workflow_dispatch.
-Configure concurrency with cancel-in-progress on pull requests.
-Set permissions to contents: read, checkout with fetch-depth: 0, run studio2201/studio2201@master with tools: 'all' and fail-on: 'block'.
-Retain audit findings using actions/upload-artifact@v4 with if: always().
-Finally, add the Option 1 Single Suite Badge or Option 2 Governance Scorecard to README.md.
+Configure concurrency group ${{ github.workflow }}-${{ github.ref }} with cancel-in-progress on pull requests.
+Set permissions contents: read, checkout with fetch-depth: 0, run studio2201/studio2201@v1 with tools: 'snip,vigil,aegis' and fail-on: 'block'.
+Retain audit findings by uploading *_report.md using actions/upload-artifact@v4 with if: always().
+Finally, add a dynamic Shields.io workflow status badge to README.md reflecting actual CI verdict:
+[![studio2201][badge]][ci]
+[badge]: https://img.shields.io/github/actions/workflow/status/<owner>/<repo>/studio2201.yml?branch=master&label=studio2201&logo=shield
+[ci]: https://github.com/<owner>/<repo>/actions/workflows/studio2201.yml
 ```
 
 ### GitHub Actions Workflow
@@ -103,9 +106,9 @@ jobs:
           fetch-depth: 0
 
       - name: Run studio2201 Security Gate
-        uses: studio2201/studio2201@master
+        uses: studio2201/studio2201@v1
         with:
-          tools: 'all'
+          tools: 'snip,vigil,aegis'
           fail-on: 'block'
 
       - name: Retain Audit Findings
@@ -127,7 +130,7 @@ jobs:
 | [**Boneyard**](boneyard/) | Org-wide tech-debt radar | [![Boneyard][b-boneyard]](boneyard/) | [![CI][ci-boneyard]](boneyard/) | `v0.2.9` |
 | [**Aegis**](aegis/) | PQC migration SDK & scanner | [![PQC][b-aegis]](aegis/) | [![CI][ci-aegis]](aegis/) | `v0.2.10` |
 | [**Proven**](proven/) | PQC-signed supply-chain attestor | [![SLSA][b-proven]](proven/) | [![CI][ci-proven]](proven/) | `v0.2.9` |
-| [**CLI**](cli/) | Unified toolchain & local audit driver | [![Toolchain][b-cli]](cli/) | [![CI][ci-cli]](cli/) | `v0.1.8` |
+| [**CLI**](cli/) | Unified toolchain & local audit driver | [![Toolchain][b-cli]](cli/) | [![CI][ci-cli]](cli/) | `v0.1.9` |
 
 [ci-vigil]: https://github.com/studio2201/vigil/actions/workflows/ci.yml/badge.svg?branch=master
 [ci-snip]: https://github.com/studio2201/snip/actions/workflows/ci.yml/badge.svg?branch=master

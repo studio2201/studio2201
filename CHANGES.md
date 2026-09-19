@@ -4,6 +4,12 @@ All notable changes to the studio2201 product framework are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/) 1.1.0.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.3.8] — 2026-09-19
+
+### Changed
+- Updated canonical AI agent prompt with pinned `@v1` and dynamic Shields.io workflow status badge.
+- Synchronized CLI submodule to v0.1.9.
+
 ## [1.3.7] — 2026-09-19
 
 ### Fixed
