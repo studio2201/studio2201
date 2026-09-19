@@ -4,6 +4,12 @@ All notable changes to the studio2201 product framework are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/) 1.1.0.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.3.13] — 2026-09-19
+
+### Changed
+- Standardized centered 2-column Security & Governance Scorecard table `<div align="center">` in README.
+- Synchronized CLI to v0.1.12.
+
 ## [1.3.12] — 2026-09-19
 
 ### Added
