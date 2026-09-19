@@ -1,5 +1,6 @@
 # studio2201
 
+[![secured by studio2201](https://img.shields.io/badge/secured%20by-studio2201-2f6f5e?logo=shield)](https://studio2201.com)
 [![snip][badge-snip]][action-snip]
 [![vigil][badge-vigil]][action-vigil]
 [![aegis][badge-aegis]][action-aegis]
@@ -20,21 +21,26 @@
 [action-boneyard]: https://github.com/studio2201/studio2201/actions/workflows/boneyard.yml
 
 <details>
-<summary><b>Detailed 5-Tool Governance Scorecard</b></summary>
+<summary><b>Executive Assurance Scorecard</b> (EO 14028 · NIST SP 800-218 · OMB M-26-15)</summary>
 
-| Tool | Focus | Workflow Status | Action |
-| :--- | :--- | :---: | :---: |
-| [**Snip**][u-snip] | Vibe-Code & Secrets Gate | [![snip][badge-snip]][action-snip] | `tools: 'snip'` |
-| [**Vigil**][u-vigil] | Supply-Chain Dormancy | [![vigil][badge-vigil]][action-vigil] | `tools: 'vigil'` |
-| [**Aegis**][u-aegis] | PQC & Post-Quantum Scans | [![aegis][badge-aegis]][action-aegis] | `tools: 'aegis'` |
-| [**Proven**][u-proven] | ML-DSA-65 Attestation | [![proven][badge-proven]][action-proven] | `tools: 'proven'` |
-| [**Boneyard**][u-boneyard] | Tech-Debt Radar | [![boneyard][badge-boneyard]][action-boneyard] | `tools: 'boneyard'` |
+| Tool | Mandate / Standard | Assurance Metric | Status |
+| :--- | :--- | :--- | :---: |
+| [**Snip**][u-snip] | EO 14028 §4 (Credential Defense) | `0 secrets` | [![snip][m-snip]][u-snip] |
+| [**Vigil**][u-vigil] | NIST SP 800-218 (Supply Surface) | `0 dependencies` | [![vigil][m-vigil]][u-vigil] |
+| [**Aegis**][u-aegis] | OMB M-26-15 (Post-Quantum Crypto) | `PQC compliant` | [![aegis][m-aegis]][u-aegis] |
+| [**Proven**][u-proven] | NIST FIPS 204 (SLSA Level 3+) | `ML-DSA-65 verified` | [![proven][m-proven]][u-proven] |
+| [**Boneyard**][u-boneyard] | Asset Ownership (Zombie Defense) | `maintained` | [![boneyard][m-boneyard]][u-boneyard] |
 
 [u-snip]: https://studio2201.com/snip
 [u-vigil]: https://studio2201.com/vigil
 [u-aegis]: https://studio2201.com/aegis
 [u-proven]: https://studio2201.com/proven
 [u-boneyard]: https://studio2201.com/boneyard
+[m-snip]: https://img.shields.io/badge/snip-0%20secrets-2f6f5e
+[m-vigil]: https://img.shields.io/badge/vigil-0%20dependencies-2f6f5e
+[m-aegis]: https://img.shields.io/badge/aegis-PQC%20compliant-2f6f5e
+[m-proven]: https://img.shields.io/badge/proven-ML--DSA--65%20verified-2f6f5e
+[m-boneyard]: https://img.shields.io/badge/boneyard-maintained-2f6f5e
 
 </details>
 

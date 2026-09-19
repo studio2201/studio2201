@@ -4,6 +4,12 @@ All notable changes to the studio2201 product framework are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/) 1.1.0.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.3.12] — 2026-09-19
+
+### Added
+- Anchor badge (`secured by studio2201`) and canonical Executive Assurance Scorecard across all repository READMEs.
+- Synchronized child submodules (snip, vigil, aegis, proven, boneyard) and CLI to v0.1.11.
+
 ## [1.3.11] — 2026-09-19
 
 ### Changed
