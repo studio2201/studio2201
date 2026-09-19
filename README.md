@@ -1,7 +1,7 @@
 # studio2201
 
 [![studio2201 Suite](https://img.shields.io/badge/studio2201-5%2F5%20Verified-2f6f5e?logo=shield)](https://studio2201.com/agents#badges)
-[![Release](https://img.shields.io/badge/version-v1.3.8-blue.svg)](https://github.com/studio2201/studio2201/releases)
+[![Release](https://img.shields.io/badge/version-v1.3.9-blue.svg)](https://github.com/studio2201/studio2201/releases)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 
 <details>
@@ -64,15 +64,17 @@ Deploy the unified multi-tool security gate directly through your AI coding assi
 Copy and paste this instruction directly to Cursor, Claude Code, Copilot Workspace, or Devin:
 
 ```text
-Add a GitHub Actions workflow to this repository at .github/workflows/studio2201.yml using studio2201/studio2201@v1.
-Trigger on pull_request and push to master/main, and workflow_dispatch.
-Configure concurrency group ${{ github.workflow }}-${{ github.ref }} with cancel-in-progress on pull requests.
-Set permissions contents: read, checkout with fetch-depth: 0, run studio2201/studio2201@v1 with tools: 'snip,vigil,aegis' and fail-on: 'block'.
-Retain audit findings by uploading *_report.md using actions/upload-artifact@v4 with if: always().
-Finally, add a dynamic Shields.io workflow status badge to README.md reflecting actual CI verdict:
-[![studio2201][badge]][ci]
-[badge]: https://img.shields.io/github/actions/workflow/status/<owner>/<repo>/studio2201.yml?branch=master&label=studio2201&logo=shield
-[ci]: https://github.com/<owner>/<repo>/actions/workflows/studio2201.yml
+Add a GitHub Actions workflow to this repository at .github/workflows/studio2201.yml using studio2201/studio2201@v1:
+- Triggers: pull_request, push to default branch (master/main), and workflow_dispatch.
+- Concurrency: group ${{ github.workflow }}-${{ github.ref }} with cancel-in-progress on pull_request.
+- Permissions: contents: read, checkout with fetch-depth: 0.
+- Action: run studio2201/studio2201@v1 with tools: 'snip,vigil,aegis' and fail-on: 'block'.
+- Artifacts: upload *_report.md using actions/upload-artifact@v4 with if: always().
+- Zero False Positives: @v1 provisions Vigil v0.2.11+ (excludes root crates) & Aegis v0.2.10+ (skips comments).
+- README Badge: add dynamic Shields.io workflow status badge to top of README.md (replace <owner>/<repo>):
+  [![studio2201][badge]][ci]
+  [badge]: https://img.shields.io/github/actions/workflow/status/<owner>/<repo>/studio2201.yml?label=studio2201&logo=shield
+  [ci]: https://github.com/<owner>/<repo>/actions/workflows/studio2201.yml
 ```
 
 ### GitHub Actions Workflow

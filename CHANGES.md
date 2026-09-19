@@ -4,6 +4,12 @@ All notable changes to the studio2201 product framework are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/) 1.1.0.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.3.9] — 2026-09-19
+
+### Changed
+- Restructured AI agent prompt with clear bulleted parameters and dynamic status badge.
+- Synchronized canonical prompt across studio2201.com, READMEs, and CLI scaffolding.
+
 ## [1.3.8] — 2026-09-19
 
 ### Changed
