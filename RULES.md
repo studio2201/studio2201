@@ -30,10 +30,21 @@ Do not add messy code or unproven features.
 If you must add messy code, explain why.
 Do not reach into another module's private state.
 
-### 1.6 Proof of work
-When you build a feature, prove that it works.
-Also prove that it fails safely when there is an error.
+### 1.6 Proof of work & hostile verification
+Software only works until an assumption breaks.
+Do not merely verify the happy path; actively destroy assumptions behind
+code, tests, and documentation.
+When you build a feature, prove that it works, and prove that it fails
+safely and closed under hostile conditions.
 A test that always passes is not proof.
+Run boundary tests: verify behavior with missing permissions, corrupted
+manifests, invalid tokens, and missing files. Every failure must return
+an explicit error code, never silently pass.
+Run chaos tests: starve memory and file descriptors, feed empty or huge
+inputs, and interleave valid and garbage data. The binary must never hang
+or panic uncontrollably.
+Verify lifecycle safety: close sockets, free memory, unlink temporary files
+even during crashes, and never leak credentials or keys to logs.
 If work fails halfway, leave the world consistent. Do not leave torn state.
 
 ### 1.7 Clean code
@@ -66,7 +77,7 @@ If you write code for the internet, follow the official internet rules (IETF RFC
 Write the RFC number in the file.
 
 ### 1.13 Write Rust, not host shell
-This is a Rust organization. New tools and checks are Rust `.rs` files. Run them with `cargo xtask`.
+This is a Rust organization. New tools and checks are Rust `.rs` files. Run them with `cargo test`, `cargo run`, or the `studio2201` CLI.
 Do not add a new `.sh` or `.py` helper when the same job can be a Rust tool.
 A host script is only for things Rust cannot do (like Docker entrypoints or CI pipelines).
 Put one line at the top of that script saying why it is not Rust.

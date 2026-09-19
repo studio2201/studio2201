@@ -1,7 +1,7 @@
 # studio2201
 
 [![CI](https://github.com/studio2201/studio2201/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/studio2201/studio2201/actions/workflows/ci.yml)
-[![Release](https://img.shields.io/badge/version-v1.2.9-blue.svg)](https://github.com/studio2201/studio2201/releases)
+[![Release](https://img.shields.io/badge/version-v1.3.0-blue.svg)](https://github.com/studio2201/studio2201/releases)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 [![Pure std::](https://img.shields.io/badge/pure-std%3A%3A-success.svg)](https://studio2201.com)
 [![Max LOC](https://img.shields.io/badge/max%20LOC-%E2%89%A4256-brightgreen.svg)](https://studio2201.com)
@@ -71,11 +71,8 @@ jobs:
 
 | Document | Focus |
 |---|---|
-| [`PRODUCTS/`](PRODUCTS/) | Complete 19-section product framework & specifications |
-| [`DESIGN.md`](DESIGN.md) | Ecosystem architectural design & product catalog |
-| [`RULES.md`](RULES.md) | Immutable engineering constraints (pure `std::` Rust, $\le 256$ LOC) |
-| [`PROBE.md`](PROBE.md) | Hostile security testing, negative verification & chaos tests |
-| [`SWARM.md`](SWARM.md) | Autonomous multi-agent coordination protocol |
+| [`DESIGN.md`](DESIGN.md) | Ecosystem architectural design, 6-tool suite & artifact contracts |
+| [`RULES.md`](RULES.md) | Immutable engineering constraints (pure `std::` Rust, $\le 256$ LOC, hostile testing) |
 
 **Documentation & Storefront:** https://studio2201.com
 

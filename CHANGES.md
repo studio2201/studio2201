@@ -4,6 +4,18 @@ All notable changes to the studio2201 product framework are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/) 1.1.0.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.3.0] — 2026-09-19
+
+### Removed
+- Purged legacy openOODA framework files (`OODA.md`, `SWARM.md`, `PROBE.md`, `PRODUCTS/` directory).
+- Replaced 19-file `PRODUCTS/` hierarchy with consolidated single-source architecture in `DESIGN.md`.
+
+### Changed
+- Consolidated suite architecture into `DESIGN.md` (Rule of 10 root layout, tri-state exit codes, 6-tool suite + canary, artifact contracts).
+- Absorbed hostile testing ethos from `PROBE.md` into `RULES.md` §1.6 and removed stale `cargo xtask` references.
+- Updated `README.md` doctrine index to point directly to `DESIGN.md` and `RULES.md`.
+- Synchronized `vigil` submodule reference after removing root `vigil.svg` discrepancy.
+
 ## [1.2.9] — 2026-09-19
 
 ### Changed
