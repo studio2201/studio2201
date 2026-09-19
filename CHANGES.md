@@ -4,6 +4,14 @@ All notable changes to the studio2201 product framework are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/) 1.1.0.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.3.2] — 2026-09-19
+
+### Fixed
+- Fixed unclosed code-box div and enhanced Option 2 scorecard on studio2201.com.
+- Aligned Option 2 collapsible scorecard columns and HTML summary syntax in CLI scaffolding.
+- Enhanced GitHub Action summary badge tip with visual shield and copyable code block.
+- Added non-destructive idempotency test to CLI suite and bumped CLI to v0.1.3.
+
 ## [1.3.1] — 2026-09-19
 
 ### Changed
