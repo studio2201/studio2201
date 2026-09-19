@@ -4,6 +4,13 @@ All notable changes to the studio2201 product framework are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/) 1.1.0.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.2.9] — 2026-09-19
+
+### Changed
+- Rewrote `DESIGN.md` to eliminate obsolete openOODA / CRDT / WebGL references and document the actual studio2201 suite architecture.
+- Removed empty scrap files (`PM.md`, `SPRINT.md`).
+- Modernized Core Doctrine documentation to feature the 19-section `PRODUCTS/` framework.
+
 ## [1.2.8] — 2026-09-19
 
 ### Added

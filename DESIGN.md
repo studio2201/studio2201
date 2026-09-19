@@ -1,38 +1,26 @@
 # studio2201 Architectural Design
 
-**studio2201** is a digital workshop that builds web tools. We do not build huge game engines. We build small, focused tools.
+**studio2201** is a pure `std::` Rust software suite providing automated security, supply-chain governance, and post-quantum cryptographic validation for modern codebases and AI coding agents.
 
-## 1. The Core Web Suite (7 Tools)
+## 1. Core Architecture Principles
 
-We will build exactly 7 tools to run our digital projects. We do not chase numbers like "9x9".
-*   **One job only:** Each tool does exactly one thing perfectly. No extra features.
-*   **Web Containers:** Every tool is a small Docker or Podman container. It starts in milliseconds.
+- **Zero Crates.io Dependencies:** Built strictly with pure `std::` Rust. Zero external supply-chain attack surfaces.
+- **Strict File Bounds (<= 256 LOC):** Every source file, test, and workflow is bounded, forcing modularity and cognitive clarity.
+- **Fail-Closed Verification:** Tools exit with code `0` on verified clean, and exit code `1` on security, policy, or supply-chain violations.
+- **Zero-Root Operation:** Installs and operates entirely within unprivileged user space (`~/.local/bin`).
 
-## 2. Copyright Safety & Clean Room Design
+## 2. The studio2201 Product Suite
 
-We do not steal or copy code. We write all code from scratch.
-*   **No Copying:** We do not fork or borrow from other open-source game engines.
-*   **We Own It All:** We build our own art, physics, and networking code. We own 100% of the rights.
+Each tool solves one specific integrity challenge:
 
-## 3. Technology Stack
+1. **Snip (Vibe-Code Security Gate):** Audits AI-generated diffs for hardcoded credentials, missing database Row Level Security (RLS), and permissive CORS.
+2. **Vigil (Supply-Chain Dormancy Scanner):** Evaluates project manifests (`Cargo.lock`, `package.json`, `pyproject.toml`, `go.mod`) for abandoned dependencies.
+3. **Aegis (PQC Migration SDK & Scanner):** Identifies quantum-vulnerable classical cryptography (RSA, ECDSA) and plans migrations to NIST FIPS 203/204 standards (ML-KEM, ML-DSA).
+4. **Proven (Supply-Chain Attestor):** Computes Merkle roots and signs build artifacts with post-quantum ML-DSA-65 attestations (SLSA Level 3+).
+5. **Boneyard (Tech-Debt Radar):** Evaluates multi-repo catalogs to score technical debt (0–100 Boneyard Index) and emit remediation budgets in repo-weeks.
+6. **studio2201 CLI (Toolchain & Audit Manager):** Unified single-binary frontend for zero-root installation, upgrades, and local pre-commit checks (`studio2201 check`).
+7. **Canary (Negative Verification Testbed):** Intentionally broken reference repository asserting that defensive gates reliably catch flaws and fail closed.
 
-Our tools are simple but use the best new web tech:
-*   **WASM & WebGL:** We run smooth graphics in the browser. No heavy desktop downloads.
-*   **OpenOODA:** We use OpenOODA networks and CRDTs to keep data in sync for everyone.
+## 3. Product Framework
 
-## 4. Governance
-
-*   We strictly follow the rules in `RULES.md`, `SWARM.md`, and `PROBE.md`.
-*   We write code in loops using `OODA.md` to make sure the code is clean, proven, and safe.
-
-## 5. The "Core 7" Roster (Web Operations Toolkit)
-
-These 7 tools help us build and run websites. They do not use heavy AI. They use math and fast web code (CRDTs, WebRTC, WASM, openOODA).
-
-1.  **proof (Analytics Engine):** We do not track users with cookies. We use WASM math (mouse speed, scrolling) to prove a real human read the page. It ignores bots.
-2.  **diag (Status Page):** If a server goes down, the status page gives the user a WASM terminal. The user can run network tests to see if their internet or our server is broken.
-3.  **pay (Checkout Gateway):** This wraps Stripe to take small payments (like a $0.10 tip). The user taps a hardware Passkey to pay. There is no credit card form.
-4.  **canvas (Feedback & Bug Board):** Users report bugs by drawing on a shared canvas. Other users can pay small bounties using the Checkout Gateway to get bugs fixed faster.
-5.  **publish (Sovereign Publisher):** Your blog is compiled into a CRDT block. It shares itself over a peer-to-peer network (`ImpSync`). If the main server crashes, the blog still works.
-6.  **form (Dynamic Forms Engine):** Users fill out contact forms, but their email is locked with crypto on their computer. You can reply to them without ever seeing their real email.
-7.  **fallback (Fallback Gateway):** If a server crashes, it does not show a blank 502 error page. It shows a fun WebGL game (`idlescreen`) until the server comes back online.
+The full doctrine and engineering specifications are detailed across the 19 sections in `PRODUCTS/index.md`.

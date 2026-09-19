@@ -1,7 +1,7 @@
 # studio2201
 
 [![CI](https://github.com/studio2201/studio2201/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/studio2201/studio2201/actions/workflows/ci.yml)
-[![Release](https://img.shields.io/badge/version-v1.2.8-blue.svg)](https://github.com/studio2201/studio2201/releases)
+[![Release](https://img.shields.io/badge/version-v1.2.9-blue.svg)](https://github.com/studio2201/studio2201/releases)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 [![Pure std::](https://img.shields.io/badge/pure-std%3A%3A-success.svg)](https://studio2201.com)
 [![Max LOC](https://img.shields.io/badge/max%20LOC-%E2%89%A4256-brightgreen.svg)](https://studio2201.com)
@@ -67,15 +67,15 @@ jobs:
 | [**Proven**](proven/) | PQC-signed supply-chain attestor | [![SLSA](https://img.shields.io/badge/SLSA-Level%203%2B-blue.svg)](proven/) | [![CI](https://github.com/studio2201/proven/actions/workflows/ci.yml/badge.svg?branch=master)](proven/) | `v0.2.6` |
 | [**CLI**](cli/) | Unified toolchain & local audit driver | [![Toolchain](https://img.shields.io/badge/toolchain-unified-blue.svg)](cli/) | [![CI](https://github.com/studio2201/cli/actions/workflows/ci.yml/badge.svg?branch=master)](cli/) | `v0.1.0` |
 
-## Core Doctrine
+## Core Doctrine & Architecture
 
-| File | Purpose |
+| Document | Focus |
 |---|---|
-| `RULES.md` | Immutable engineering rules |
-| `OODA.md` | Observe → Decide → Act → Lock → Ship workflow |
-| `PROBE.md` | Security testing checklist |
-| `SWARM.md` | Multi-agent coordination |
-| `DESIGN.md` | Product design principles |
+| [`PRODUCTS/`](PRODUCTS/) | Complete 19-section product framework & specifications |
+| [`DESIGN.md`](DESIGN.md) | Ecosystem architectural design & product catalog |
+| [`RULES.md`](RULES.md) | Immutable engineering constraints (pure `std::` Rust, $\le 256$ LOC) |
+| [`PROBE.md`](PROBE.md) | Hostile security testing, negative verification & chaos tests |
+| [`SWARM.md`](SWARM.md) | Autonomous multi-agent coordination protocol |
 
 **Documentation & Storefront:** https://studio2201.com
 
