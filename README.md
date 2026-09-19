@@ -5,7 +5,7 @@
 [![aegis][badge-aegis]][action-aegis]
 [![proven][badge-proven]][action-proven]
 [![boneyard][badge-boneyard]][action-boneyard]
-[![Release](https://img.shields.io/badge/version-v1.3.10-blue.svg)](https://github.com/studio2201/studio2201/releases)
+[![Release](https://img.shields.io/badge/version-v1.3.11-blue.svg)](https://github.com/studio2201/studio2201/releases)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 
 [badge-snip]: https://img.shields.io/github/actions/workflow/status/studio2201/studio2201/snip.yml?label=snip&logo=shield

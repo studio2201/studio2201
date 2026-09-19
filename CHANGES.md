@@ -4,6 +4,12 @@ All notable changes to the studio2201 product framework are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/) 1.1.0.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.3.11] — 2026-09-19
+
+### Changed
+- Synchronized child submodules (snip, vigil, aegis, proven, boneyard) with dedicated workflows and dynamic badges.
+- Synchronized CLI submodule to v0.1.10.
+
 ## [1.3.10] — 2026-09-19
 
 ### Changed
