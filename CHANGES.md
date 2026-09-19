@@ -4,6 +4,14 @@ All notable changes to the studio2201 product framework are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/) 1.1.0.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.3.3] — 2026-09-19
+
+### Changed
+- Standardized Option 2 Detailed Governance Scorecard across all repositories.
+- Embedded collapsible governance scorecard in parent and child repository READMEs.
+- Updated child tool versions to v0.2.8 and CLI to v0.1.5 in product matrix.
+- Synchronized child submodules and verified end-to-end compliance.
+
 ## [1.3.2] — 2026-09-19
 
 ### Fixed
