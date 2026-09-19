@@ -219,6 +219,11 @@ runs:
                 echo "</details>"
               fi
             done
+            echo ""
+            echo "---"
+            echo "💡 **Tip:** Embed the studio2201 verification badge in your README:"
+            echo '`[![studio2201 Suite](https://img.shields.io/badge/studio2201-5%2F5%20Verified-2f6f5e?logo=shield)](https://studio2201.com/agents#badges)`'
+            echo "See the [Badge Integration Guide](https://studio2201.com/agents#badges) for details."
           } >> "$GITHUB_STEP_SUMMARY"
         fi
 

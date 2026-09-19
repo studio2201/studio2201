@@ -4,6 +4,14 @@ All notable changes to the studio2201 product framework are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/) 1.1.0.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.3.1] — 2026-09-19
+
+### Changed
+- Updated README headers across all repositories to unified Option 1 Single Suite Badge.
+- Added badge tip to GitHub Actions step summary in composite action.
+- Added comprehensive badge integration showcase in studio2201.com/agents#badges.
+- Bumped version to 1.3.1 and updated child tool and CLI submodule references.
+
 ## [1.3.0] — 2026-09-19
 
 ### Removed

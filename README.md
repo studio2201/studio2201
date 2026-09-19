@@ -1,10 +1,8 @@
 # studio2201
 
-[![CI](https://github.com/studio2201/studio2201/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/studio2201/studio2201/actions/workflows/ci.yml)
-[![Release](https://img.shields.io/badge/version-v1.3.0-blue.svg)](https://github.com/studio2201/studio2201/releases)
+[![studio2201 Suite](https://img.shields.io/badge/studio2201-5%2F5%20Verified-2f6f5e?logo=shield)](https://studio2201.com/agents#badges)
+[![Release](https://img.shields.io/badge/version-v1.3.1-blue.svg)](https://github.com/studio2201/studio2201/releases)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
-[![Pure std::](https://img.shields.io/badge/pure-std%3A%3A-success.svg)](https://studio2201.com)
-[![Max LOC](https://img.shields.io/badge/max%20LOC-%E2%89%A4256-brightgreen.svg)](https://studio2201.com)
 
 Parent framework and composite security governance gate for the studio2201 ecosystem.
 
@@ -60,12 +58,12 @@ jobs:
 
 | Product | Focus | Tool-Specific Badge | Action / CI | Version |
 | :--- | :--- | :--- | :--- | :--- |
-| [**Vigil**](vigil/) | Supply-chain dormancy scanner | [![Dormancy](https://img.shields.io/badge/dormancy-healthy-2f6f5e.svg)](vigil/) | [![CI](https://github.com/studio2201/vigil/actions/workflows/ci.yml/badge.svg?branch=master)](vigil/) | `v0.2.6` |
-| [**Snip**](snip/) | Vibe-code security gate | [![Vibe-Safe](https://img.shields.io/badge/vibe--safe-SHIP-brightgreen.svg)](snip/) | [![CI](https://github.com/studio2201/snip/actions/workflows/ci.yml/badge.svg?branch=master)](snip/) | `v0.2.6` |
-| [**Boneyard**](boneyard/) | Org-wide tech-debt radar | [![Boneyard](https://img.shields.io/badge/boneyard%20index-0%2F100-brightgreen.svg)](boneyard/) | [![CI](https://github.com/studio2201/boneyard/actions/workflows/ci.yml/badge.svg?branch=master)](boneyard/) | `v0.2.6` |
-| [**Aegis**](aegis/) | PQC migration SDK & scanner | [![PQC](https://img.shields.io/badge/PQC-Quantum--Safe-blueviolet.svg)](aegis/) | [![CI](https://github.com/studio2201/aegis/actions/workflows/ci.yml/badge.svg?branch=master)](aegis/) | `v0.2.6` |
-| [**Proven**](proven/) | PQC-signed supply-chain attestor | [![SLSA](https://img.shields.io/badge/SLSA-Level%203%2B-blue.svg)](proven/) | [![CI](https://github.com/studio2201/proven/actions/workflows/ci.yml/badge.svg?branch=master)](proven/) | `v0.2.6` |
-| [**CLI**](cli/) | Unified toolchain & local audit driver | [![Toolchain](https://img.shields.io/badge/toolchain-unified-blue.svg)](cli/) | [![CI](https://github.com/studio2201/cli/actions/workflows/ci.yml/badge.svg?branch=master)](cli/) | `v0.1.0` |
+| [**Vigil**](vigil/) | Supply-chain dormancy scanner | [![Dormancy](https://img.shields.io/badge/dormancy-healthy-2f6f5e.svg)](vigil/) | [![CI](https://github.com/studio2201/vigil/actions/workflows/ci.yml/badge.svg?branch=master)](vigil/) | `v0.2.7` |
+| [**Snip**](snip/) | Vibe-code security gate | [![Vibe-Safe](https://img.shields.io/badge/vibe--safe-SHIP-brightgreen.svg)](snip/) | [![CI](https://github.com/studio2201/snip/actions/workflows/ci.yml/badge.svg?branch=master)](snip/) | `v0.2.7` |
+| [**Boneyard**](boneyard/) | Org-wide tech-debt radar | [![Boneyard](https://img.shields.io/badge/boneyard%20index-0%2F100-brightgreen.svg)](boneyard/) | [![CI](https://github.com/studio2201/boneyard/actions/workflows/ci.yml/badge.svg?branch=master)](boneyard/) | `v0.2.7` |
+| [**Aegis**](aegis/) | PQC migration SDK & scanner | [![PQC](https://img.shields.io/badge/PQC-Quantum--Safe-blueviolet.svg)](aegis/) | [![CI](https://github.com/studio2201/aegis/actions/workflows/ci.yml/badge.svg?branch=master)](aegis/) | `v0.2.7` |
+| [**Proven**](proven/) | PQC-signed supply-chain attestor | [![SLSA](https://img.shields.io/badge/SLSA-Level%203%2B-blue.svg)](proven/) | [![CI](https://github.com/studio2201/proven/actions/workflows/ci.yml/badge.svg?branch=master)](proven/) | `v0.2.7` |
+| [**CLI**](cli/) | Unified toolchain & local audit driver | [![Toolchain](https://img.shields.io/badge/toolchain-unified-blue.svg)](cli/) | [![CI](https://github.com/studio2201/cli/actions/workflows/ci.yml/badge.svg?branch=master)](cli/) | `v0.1.2` |
 
 ## Core Doctrine & Architecture
 
