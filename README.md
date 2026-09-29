@@ -130,11 +130,3 @@ studio2201 upgrade all        # upgrade tools to latest release
 studio2201 remove <tool>      # remove an installed tool
 studio2201 init               # scaffold GitHub Action & agent guardrails
 ```
-
----
-
-<div align="center">
-
-[![Necrometer](necrometer.svg)](https://necrometer.dev/?u=studio2201)
-
-</div>
