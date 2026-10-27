@@ -4,16 +4,15 @@ All notable changes to the studio2201 product framework are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/) 1.1.0.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.4.0] — 2026-10-27
+
+### Added
+- Migrated all 6 Wayland GNOME Shell extensions (`coral`, `kelp`, `reef`, `seabed`, `shoal`, `tide`) into `studio2201` (`*@studio2201.github.io`) with unified multi-pillar README showcase.
+
 ## [1.3.15] — 2026-09-19
- 
-### Changed
-- Purged all dynamic badge alternatives across suite; standardized solely on the Centered Scorecard table.
-- Synchronized all child submodules (snip v0.2.11, vigil v0.2.13, aegis v0.2.12, proven v0.2.11, boneyard v0.2.12).
- 
-## [1.3.14] — 2026-09-19
 
 ### Changed
-- Synchronized all child submodules (snip v0.2.10, vigil v0.2.12, aegis v0.2.11, proven v0.2.10, boneyard v0.2.11, cli v0.1.12) with standardized centered scorecard table.
+- Standardized solely on the Centered Scorecard table and synchronized all child submodules (`snip` v0.2.11, `vigil` v0.2.13, `aegis` v0.2.12, `proven` v0.2.11, `boneyard` v0.2.12, `cli` v0.1.12).
 
 ## [1.3.13] — 2026-09-19
 

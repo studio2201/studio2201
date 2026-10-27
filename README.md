@@ -2,8 +2,10 @@
 
 <div align="center">
 
-[![Release](https://img.shields.io/badge/version-v1.3.15-blue.svg)](https://github.com/studio2201/studio2201/releases)
+[![Release](https://img.shields.io/badge/version-v1.4.0-blue.svg)](https://github.com/studio2201/studio2201/releases)
+[![GNOME Suite](https://img.shields.io/badge/GNOME%2045--50-6%20Wayland%20Extensions-0b6e87)](https://studio2201.com/#gnome)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
+[![Sponsor: Tuition, Not Coffee](https://img.shields.io/badge/Sponsor-Tuition%2C%20Not%20Coffee%20%F0%9F%8E%93-2ec27e)](https://ubermetroid.github.io/tuition-not-coffee)
 
 | Security Pillar | Verification Badge |
 | :--- | :---: |
@@ -29,39 +31,45 @@
 
 </div>
 
-Parent framework and composite security governance gate for the studio2201 ecosystem.
+Parent framework, composite GitHub Actions security gate, and ecosystem index for **studio2201** — spanning **Wayland GNOME Shell Desktop Extensions**, **Zero-Dependency Rust CI/CD Security Actions**, and **Static Web Portals** (&le; 256 LOC per file).
 
-## Why Automated CI Enforcement Is Needed
+---
 
-Software supply-chain attacks and code vulnerabilities have migrated upstream:
-- **LLM-generated credential exposure**: AI coding tools leak API keys at more than double human rates.
-- **Unmaintained dependencies**: Over 80% of open-source components carry dormant risks.
-- **Cryptographic obsolescence**: Classical algorithms face imminent quantum decryption (OMB M-26-15).
-- **Automated enforcement**: Security discipline degrades under deadlines. Automated GitHub Actions gates
-  provide non-bypassable, fail-closed enforcement on every pull request before code merges.
+## 01 · GNOME Shell Desktop Suite (Wayland 45–50)
 
-## Autonomous Agent Integration
+Six zero-subprocess, Wayland-native GNOME Shell extensions with one-click **Sync Color Across Suite** accent borders and `shexli` 0-warning EGO verification:
 
-Deploy dedicated security workflows directly through your AI coding assistant:
+| Extension | Role | UUID | Repository & Microsite | Version |
+| :--- | :--- | :--- | :--- | :--- |
+| [**Kelp**](https://github.com/studio2201/kelp) | Auto-Tiler (Octopus / Seahorse / Otter) | `kelp@studio2201.github.io` | [Repo](https://github.com/studio2201/kelp) · [Website](https://studio2201.github.io/kelp/) | `v2.2.0` |
+| [**Reef**](https://github.com/studio2201/reef) | Intelligent Dock & Panel | `reef@studio2201.github.io` | [Repo](https://github.com/studio2201/reef) · [Website](https://studio2201.github.io/reef/) | `v1.2.0` |
+| [**Tide**](https://github.com/studio2201/tide) | Super & `Super+Enter` App Launcher | `tide@studio2201.github.io` | [Repo](https://github.com/studio2201/tide) · [Website](https://studio2201.github.io/tide/) | `v1.2.1` |
+| [**Coral**](https://github.com/studio2201/coral) | Alphabetical App Grid & Auto-Folders | `coral@studio2201.github.io` | [Repo](https://github.com/studio2201/coral) · [Website](https://studio2201.github.io/coral/) | `v1.4.0` |
+| [**Seabed**](https://github.com/studio2201/seabed) | Compositor-Native Desktop Icons | `seabed@studio2201.github.io` | [Repo](https://github.com/studio2201/seabed) · [Website](https://studio2201.github.io/seabed/) | `v1.5.0` |
+| [**Shoal**](https://github.com/studio2201/shoal) | AppIndicator, SNI & DBusMenu Tray | `shoal@studio2201.github.io` | [Repo](https://github.com/studio2201/shoal) · [Website](https://studio2201.github.io/shoal/) | `v1.2.0` |
 
-### Prompt for your AI Agent
+---
 
-Copy and paste this instruction directly to Cursor, Claude Code, Copilot Workspace, or Devin:
+## 02 · GitHub CI/CD Security Actions & Toolchain (Pure `std::` Rust)
 
-```text
-Add 5 dedicated GitHub Actions workflows to this repository (.github/workflows/<tool>.yml):
-- snip.yml (name: snip, tools: 'snip' — diffs, secrets, Supabase RLS)
-- vigil.yml (name: vigil, tools: 'vigil' — dependency dormancy, excludes root crates)
-- aegis.yml (name: aegis, tools: 'aegis' — post-quantum crypto, skips comments)
-- proven.yml (name: proven, tools: 'proven' — ML-DSA-65 attestations)
-- boneyard.yml (name: boneyard, tools: 'boneyard' — tech-debt radar)
-All workflows trigger on pull_request, push to master/main, and workflow_dispatch,
-Embed the studio2201 Governance Scorecard table centered at the top of README.md (specs: studio2201.com/agents).
-```
+| Product | Focus | Tool-Specific Badge | Action / CI | Version |
+| :--- | :--- | :--- | :--- | :--- |
+| [**Vigil**](vigil/) | Supply-chain dormancy scanner | [![Dormancy][b-vigil]](vigil/) | [![CI][ci-vigil]](vigil/) | `v0.2.13` |
+| [**Snip**](snip/) | Vibe-code security gate | [![Vibe-Safe][b-snip]](snip/) | [![CI][ci-snip]](snip/) | `v0.2.11` |
+| [**Boneyard**](boneyard/) | Org-wide tech-debt radar | [![Boneyard][b-boneyard]](boneyard/) | [![CI][ci-boneyard]](boneyard/) | `v0.2.12` |
+| [**Aegis**](aegis/) | PQC migration SDK & scanner | [![PQC][b-aegis]](aegis/) | [![CI][ci-aegis]](aegis/) | `v0.2.12` |
+| [**Proven**](proven/) | PQC-signed supply-chain attestor | [![SLSA][b-proven]](proven/) | [![CI][ci-proven]](proven/) | `v0.2.11` |
+| [**CLI**](cli/) | Unified toolchain & local audit driver | [![Toolchain][b-cli]](cli/) | [![CI][ci-cli]](cli/) | `v0.1.13` |
 
-### GitHub Actions Workflow
+[ci-vigil]: https://github.com/studio2201/vigil/actions/workflows/ci.yml/badge.svg?branch=master
+[ci-snip]: https://github.com/studio2201/snip/actions/workflows/ci.yml/badge.svg?branch=master
+[ci-boneyard]: https://github.com/studio2201/boneyard/actions/workflows/ci.yml/badge.svg?branch=master
+[ci-aegis]: https://github.com/studio2201/aegis/actions/workflows/ci.yml/badge.svg?branch=master
+[ci-proven]: https://github.com/studio2201/proven/actions/workflows/ci.yml/badge.svg?branch=master
+[ci-cli]: https://github.com/studio2201/cli/actions/workflows/ci.yml/badge.svg?branch=master
+[b-cli]: https://img.shields.io/badge/toolchain-unified-blue.svg
 
-Reference template for `.github/workflows/<tool>.yml` (replace `<tool>` with snip, vigil, aegis, proven, boneyard):
+### GitHub Actions Workflow & Autonomous Agent Integration
 
 ```yaml
 name: snip
@@ -86,47 +94,23 @@ jobs:
         with: { name: snip-report, path: snip_report.md, if-no-files-found: ignore }
 ```
 
-## Five Products & Tool Status
-
-| Product | Focus | Tool-Specific Badge | Action / CI | Version |
-| :--- | :--- | :--- | :--- | :--- |
-| [**Vigil**](vigil/) | Supply-chain dormancy scanner | [![Dormancy][b-vigil]](vigil/) | [![CI][ci-vigil]](vigil/) | `v0.2.11` |
-| [**Snip**](snip/) | Vibe-code security gate | [![Vibe-Safe][b-snip]](snip/) | [![CI][ci-snip]](snip/) | `v0.2.9` |
-| [**Boneyard**](boneyard/) | Org-wide tech-debt radar | [![Boneyard][b-boneyard]](boneyard/) | [![CI][ci-boneyard]](boneyard/) | `v0.2.9` |
-| [**Aegis**](aegis/) | PQC migration SDK & scanner | [![PQC][b-aegis]](aegis/) | [![CI][ci-aegis]](aegis/) | `v0.2.10` |
-| [**Proven**](proven/) | PQC-signed supply-chain attestor | [![SLSA][b-proven]](proven/) | [![CI][ci-proven]](proven/) | `v0.2.9` |
-| [**CLI**](cli/) | Unified toolchain & local audit driver | [![Toolchain][b-cli]](cli/) | [![CI][ci-cli]](cli/) | `v0.1.9` |
-
-[ci-vigil]: https://github.com/studio2201/vigil/actions/workflows/ci.yml/badge.svg?branch=master
-[ci-snip]: https://github.com/studio2201/snip/actions/workflows/ci.yml/badge.svg?branch=master
-[ci-boneyard]: https://github.com/studio2201/boneyard/actions/workflows/ci.yml/badge.svg?branch=master
-[ci-aegis]: https://github.com/studio2201/aegis/actions/workflows/ci.yml/badge.svg?branch=master
-[ci-proven]: https://github.com/studio2201/proven/actions/workflows/ci.yml/badge.svg?branch=master
-[ci-cli]: https://github.com/studio2201/cli/actions/workflows/ci.yml/badge.svg?branch=master
-[b-cli]: https://img.shields.io/badge/toolchain-unified-blue.svg
-
-## Core Doctrine & Architecture
-
-| Document | Focus |
-|---|---|
-| [`DESIGN.md`](DESIGN.md) | Ecosystem architectural design, 6-tool suite & artifact contracts |
-| [`RULES.md`](RULES.md) | Immutable engineering constraints (pure `std::` Rust, $\le 256$ LOC, hostile testing) |
-
-**Documentation & Storefront:** https://studio2201.com
-
-## Workstation & Toolchain Installation
-
-Install the unified `studio2201` CLI and toolchain to manage, audit, and upgrade all tools:
+### Workstation CLI Installation
 
 ```bash
-# Install the unified CLI and all tools:
 curl -fsSL https://studio2201.com/install.sh | sh -s all
-
-# Manage toolchain and run pre-commit audits:
 studio2201 list               # check installed tools & versions
 studio2201 check              # run audit suite locally
-studio2201 install <tool>     # install a specific tool
 studio2201 upgrade all        # upgrade tools to latest release
-studio2201 remove <tool>      # remove an installed tool
 studio2201 init               # scaffold GitHub Action & agent guardrails
 ```
+
+---
+
+## 03 · Webpages, Portals & Core Doctrine
+
+| Resource | Focus |
+|---|---|
+| [**`studio2201.com`**](https://studio2201.com) | Main organization portal, product specs, [Agent Guide](https://studio2201.com/agents) & [Canary Showcase](https://studio2201.com/canary) |
+| [**`Tuition, Not Coffee`**](https://ubermetroid.github.io/tuition-not-coffee) | Community sponsorship supporting our daughter's college tuition fund |
+| [`DESIGN.md`](DESIGN.md) | Ecosystem architectural design & artifact contracts |
+| [`RULES.md`](RULES.md) | Immutable engineering constraints (pure `std::` Rust, $\le 256$ LOC, hostile testing) |
