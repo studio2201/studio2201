@@ -4,10 +4,10 @@ All notable changes to the studio2201 product framework are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/) 1.1.0.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
-## [1.4.0] — 2026-10-27
+## [1.4.1] — 2026-10-27
 
 ### Added
-- Migrated all 6 Wayland GNOME Shell extensions (`coral`, `kelp`, `reef`, `seabed`, `shoal`, `tide`) into `studio2201` (`*@studio2201.github.io`) with unified multi-pillar README showcase.
+- Migrated all 6 Wayland GNOME Shell extensions (`coral`, `kelp`, `reef`, `seabed`, `shoal`, `tide` `v1.2.2`) into `studio2201` (`*@studio2201.github.io`) with unified multi-pillar README showcase.
 
 ## [1.3.15] — 2026-09-19
 
