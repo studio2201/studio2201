@@ -7,12 +7,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 ## [1.4.2] — 2026-10-28
 
 ### Changed
-- Audited and upgraded all 6 GNOME Shell extensions (`coral` `v1.5.0`, `kelp` `v2.3.0`, `reef` `v1.3.0`, `seabed` `v1.6.0`, `shoal` `v1.3.0`, `tide` `v1.3.0`) for GNOME HIG compliance, adaptive Light/Dark/High-Contrast theming, unified Studio 2201 color presets, and GNOME 48–50 widget compatibility.
-
-## [1.4.1] — 2026-10-27
-
-### Added
-- Migrated all 6 Wayland GNOME Shell extensions (`coral`, `kelp`, `reef`, `seabed`, `shoal`, `tide` `v1.2.2`) into `studio2201` (`*@studio2201.github.io`) with unified multi-pillar README showcase.
+- Audited and upgraded all 6 Wayland GNOME Shell extensions (`coral` `v1.5.0`, `kelp` `v2.3.0`, `reef` `v1.3.0`, `seabed` `v1.6.0`, `shoal` `v1.3.0`, `tide` `v1.3.0`) for GNOME HIG compliance, adaptive Light/Dark/High-Contrast theming, unified Studio 2201 color presets, and GNOME 48–50 widget compatibility.
 
 ## [1.3.15] — 2026-09-19
 
