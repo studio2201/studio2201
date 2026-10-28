@@ -4,7 +4,7 @@ All notable changes to the studio2201 product framework are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/) 1.1.0.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
-## [1.4.2] — 2026-10-28
+## [1.4.3] — 2026-10-28
 
 ### Changed
 - Audited and upgraded all 6 Wayland GNOME Shell extensions (`coral` `v1.5.0`, `kelp` `v2.3.0`, `reef` `v1.3.0`, `seabed` `v1.6.0`, `shoal` `v1.3.0`, `tide` `v1.3.0`) for GNOME HIG compliance, adaptive Light/Dark/High-Contrast theming, unified Studio 2201 color presets, and GNOME 48–50 widget compatibility.
