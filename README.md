@@ -2,7 +2,7 @@
 
 <div align="center">
 
-[![Release](https://img.shields.io/badge/version-v1.4.1-blue.svg)](https://github.com/studio2201/studio2201/releases)
+[![Release](https://img.shields.io/badge/version-v1.4.2-blue.svg)](https://github.com/studio2201/studio2201/releases)
 [![GNOME Suite](https://img.shields.io/badge/GNOME%2045--50-6%20Wayland%20Extensions-0b6e87)](https://studio2201.com/#gnome)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 [![Sponsor: Tuition, Not Coffee](https://img.shields.io/badge/Sponsor-Tuition%2C%20Not%20Coffee%20%F0%9F%8E%93-2ec27e)](https://ubermetroid.github.io/tuition-not-coffee)
@@ -41,12 +41,12 @@ Six zero-subprocess, Wayland-native GNOME Shell extensions with one-click **Sync
 
 | Extension | Role | UUID | Repository & Microsite | Version |
 | :--- | :--- | :--- | :--- | :--- |
-| [**Kelp**](https://github.com/studio2201/kelp) | Auto-Tiler (Octopus / Seahorse / Otter) | `kelp@studio2201.github.io` | [Repo](https://github.com/studio2201/kelp) · [Website](https://studio2201.github.io/kelp/) | `v2.2.0` |
-| [**Reef**](https://github.com/studio2201/reef) | Intelligent Dock & Panel | `reef@studio2201.github.io` | [Repo](https://github.com/studio2201/reef) · [Website](https://studio2201.github.io/reef/) | `v1.2.0` |
-| [**Tide**](https://github.com/studio2201/tide) | Super & `Super+Enter` App Launcher | `tide@studio2201.github.io` | [Repo](https://github.com/studio2201/tide) · [Website](https://studio2201.github.io/tide/) | `v1.2.2` |
-| [**Coral**](https://github.com/studio2201/coral) | Alphabetical App Grid & Auto-Folders | `coral@studio2201.github.io` | [Repo](https://github.com/studio2201/coral) · [Website](https://studio2201.github.io/coral/) | `v1.4.0` |
-| [**Seabed**](https://github.com/studio2201/seabed) | Compositor-Native Desktop Icons | `seabed@studio2201.github.io` | [Repo](https://github.com/studio2201/seabed) · [Website](https://studio2201.github.io/seabed/) | `v1.5.0` |
-| [**Shoal**](https://github.com/studio2201/shoal) | AppIndicator, SNI & DBusMenu Tray | `shoal@studio2201.github.io` | [Repo](https://github.com/studio2201/shoal) · [Website](https://studio2201.github.io/shoal/) | `v1.2.0` |
+| [**Kelp**](https://github.com/studio2201/kelp) | Auto-Tiler (Octopus / Seahorse / Otter) | `kelp@studio2201.github.io` | [Repo](https://github.com/studio2201/kelp) · [Website](https://studio2201.github.io/kelp/) | `v2.3.0` |
+| [**Reef**](https://github.com/studio2201/reef) | Intelligent Dock & Panel | `reef@studio2201.github.io` | [Repo](https://github.com/studio2201/reef) · [Website](https://studio2201.github.io/reef/) | `v1.3.0` |
+| [**Tide**](https://github.com/studio2201/tide) | Super & `Super+Enter` App Launcher | `tide@studio2201.github.io` | [Repo](https://github.com/studio2201/tide) · [Website](https://studio2201.github.io/tide/) | `v1.3.0` |
+| [**Coral**](https://github.com/studio2201/coral) | Alphabetical App Grid & Auto-Folders | `coral@studio2201.github.io` | [Repo](https://github.com/studio2201/coral) · [Website](https://studio2201.github.io/coral/) | `v1.6.0` |
+| [**Seabed**](https://github.com/studio2201/seabed) | Compositor-Native Desktop Icons | `seabed@studio2201.github.io` | [Repo](https://github.com/studio2201/seabed) · [Website](https://studio2201.github.io/seabed/) | `v1.6.0` |
+| [**Shoal**](https://github.com/studio2201/shoal) | AppIndicator, SNI & DBusMenu Tray | `shoal@studio2201.github.io` | [Repo](https://github.com/studio2201/shoal) · [Website](https://studio2201.github.io/shoal/) | `v1.3.0` |
 
 ---
 
